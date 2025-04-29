@@ -176,7 +176,7 @@ const NavMiddle = ({ navItems }) => {
                 alt="Logo"
               />
             </Link>
-            <div className="flex gap-1 md:gap-2">
+            {/* <div className="flex gap-1 md:gap-2">
               {sponsors.map((sponsor) => (
                 <img
                   key={sponsor.id}
@@ -185,7 +185,7 @@ const NavMiddle = ({ navItems }) => {
                   alt="Sponsor"
                 />
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Desktop navigation and buttons */}
