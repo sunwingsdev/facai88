@@ -7,7 +7,7 @@ const CategoryPage = () => {
 
   return (
     <div>
-      <SecondaryBanner image={bannerImage} />
+      <SecondaryBanner image={bannerImage} catName={category} />
       <GamesSection subCat={category} />
     </div>
   );

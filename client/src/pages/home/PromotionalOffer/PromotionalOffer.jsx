@@ -2,6 +2,7 @@ import OfferCard from "@/components/home/OfferCard/OfferCard";
 import Container from "@/components/shared/Container";
 import SecondaryBanner from "@/components/shared/SecondaryBanner";
 import { useGetPromotionsQuery } from "@/redux/features/allApis/promotionApi/promotionApi";
+import promotionImg from "@/assets/promotion/image_156888.jpg";
 
 const PromotionalOffer = () => {
   // const offers = [
@@ -37,11 +38,10 @@ const PromotionalOffer = () => {
 
   const { data: promotions } = useGetPromotionsQuery();
   console.log(promotions);
+  // https://img.b112j.com/upload/announcement/image_42190.jpg
   return (
     <div>
-      <SecondaryBanner
-        image={"https://img.b112j.com/upload/announcement/image_42190.jpg"}
-      />
+      <SecondaryBanner image={promotionImg} />
       <div className="bg-[#4A4A4A]">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-6">

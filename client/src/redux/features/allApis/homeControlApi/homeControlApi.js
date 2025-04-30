@@ -22,10 +22,19 @@ const homeControlApi = baseApi.injectEndpoints({
         method: "PATCH",
       }),
     }),
+
+    deleteHomeControl: builder.mutation({
+      query: (id) => ({
+        url: `/home-controls/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["homeControls"],
+    }),
   }),
 });
 export const {
   useAddHomeControlMutation,
   useGetHomeControlsQuery,
   useUpdateSelectionMutation,
+  useDeleteHomeControlMutation,
 } = homeControlApi;

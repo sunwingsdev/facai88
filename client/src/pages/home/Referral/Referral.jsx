@@ -87,7 +87,7 @@ const Referral = () => {
               কিভাবে আরো প্রাইজ পাবেন?
             </h2>
             <div className="flex flex-col md:flex-row gap-20 md:gap-3 justify-between pt-20 pb-8">
-              {procedures.map((procedure, index) => (
+              {procedures?.map((procedure, index) => (
                 <div
                   className="relative md:w-1/3 bg-[#393939] px-5 py-10 rounded-md space-y-2"
                   key={procedure.id}

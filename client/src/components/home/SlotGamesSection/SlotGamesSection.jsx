@@ -1,5 +1,5 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-
+import "react-tabs/style/react-tabs.css";
 import img1 from "@/assets/v2/DREAMGAMING-LIVE-001.png";
 import PrimaryButton from "@/components/shared/Buttons/PrimaryButton";
 import { useGetAllHomeGamesQuery } from "@/redux/features/allApis/homeGamesApi/homeGamesApi";
@@ -18,8 +18,7 @@ const SlotGamesSection = () => {
   const slotSubCategories = allSubCategories?.filter(
     (category) => category.category === "স্লট"
   );
-  console.log(slotGames);
-  console.log(slotSubCategories);
+
   return (
     <Tabs className="mt-5">
       <div className="bg-[#222843] flex items-center justify-between px-4 mb-4">
@@ -31,7 +30,7 @@ const SlotGamesSection = () => {
                 <Tab
                   key={subCat?._id}
                   className="text-white hover:text-[#c9a33d] cursor-pointer border-b-4 border-transparent hover:border-[#c9a33d] py-4 px-4"
-                  selectedClassName="text-[#c9a33d] border-[#c9a33d]"
+                  selectedClassName="text-[#c9a33d] border-[#c9a33d] outline-none"
                 >
                   {subCat?.name}
                 </Tab>
