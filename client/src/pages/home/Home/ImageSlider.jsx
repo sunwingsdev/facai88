@@ -32,30 +32,30 @@ const ImageSlider = () => {
   }, [currentIndex]); // Re-run the effect when currentIndex changes
 
   return (
-    <div className="flex  flex-col justify-center items-center overflow-hidden">
+    <div className="flex   flex-col justify-center items-center overflow-hidden">
       {/* **Slider Container** */}
-      <div className="relative mt-8 w-[80%] md:w-[50%] lg:w-[40%]">
+      <div className="relative mt-8 w-[100%] md:w-[50%] lg:w-[40%]">
         <div
-          className="flex transition-transform duration-500 ease-in-out w-[80%] md:w-[110%] lg:w-[110%] md:h-[250px] lg:h-[300px]"
+          className="flex gap-2  transition-transform duration-500 ease-in-out w-[80%] md:w-[110%] lg:w-[110%] md:h-[250px] lg:h-[300px]"
           style={{
             transform: `translateX(calc(-${currentIndex * 100}% + ${
               window.innerWidth >= 768 && window.innerWidth < 1024
-                ? "120px"
-                : "40px"
+                ? ""
+                : "10px"
             }))`,
           }}
         >
           {slides.map((item, index) => (
-            <div key={index} className="flex-none w-full flex justify-center">
+            <div key={index} className="flex-none w-full flex justify-center ">
               <div
                 className={`text-white rounded-lg shadow-lg ${
                   index === currentIndex ? "opacity-100" : "opacity-100"
                 } transition-all duration-500 relative`}
                 style={{
-                  width: index === currentIndex ? "120%" : "80%",
+                  width: index === currentIndex ? "120%" : "100%",
                 }}
               >
-                <div className="grid grid-cols-1">
+                <div className="grid grid-cols-1 ">
                   <img
                     src={item}
                     alt={item.title}

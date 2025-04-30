@@ -8,7 +8,7 @@ import Marquee from "./Marquee";
 const MobileHome = () => {
   const { menuItems } = useOutletContext();
   return (
-    <div className="bg-black">
+    <div className="bg-primary-primaryColor">
       <ImageSlider />
       <Marquee />
       <HomeTabs menuItems={menuItems} />

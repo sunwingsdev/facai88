@@ -11,6 +11,7 @@ import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { AnimatePresence, motion } from "motion/react";
 import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 import { useGetAllHomeGamesQuery } from "@/redux/features/allApis/homeGamesApi/homeGamesApi";
+import { MdOutlineChat } from "react-icons/md";
 
 const Header = ({ menuItems }) => {
   const { data: homeControls } = useGetHomeControlsQuery();
@@ -57,11 +58,11 @@ const Header = ({ menuItems }) => {
   );
 
   return (
-    <div className="bg-black text-white z-50">
+    <div className="bg-primary-primaryColor text-white z-50">
       <div className="flex flex-row items-center justify-around py-1">
         <IoIosMenu
           onClick={() => setIsOpen(!isOpen)}
-          className="text-green w-5 h-5"
+          className="text-textSecondaryColor w-5 h-5"
         />
         {/* Shadow Overlay */}
         {isOpen && (
@@ -187,11 +188,11 @@ const Header = ({ menuItems }) => {
               logoHomeControl?.image
             }`}
             alt="logo"
-            className="w-10"
+            className="w-16"
           />
         </Link>
 
-        <div className="w-16 md:w-40 md:hidden overflow-hidden">
+        {/* <div className="w-16 md:w-40 md:hidden overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${index * 50}%)` }} // Move one item at a time
@@ -205,8 +206,8 @@ const Header = ({ menuItems }) => {
               />
             ))}
           </div>
-        </div>
-        <div className="flex flex-row gap-1 text-green">
+        </div> */}
+        {/* <div className="flex flex-row  gap-1 text-green">
           <div className="flex flex-col items-center">
             <FaArrowRightFromBracket />
             <p className="text-xs">App</p>
@@ -215,6 +216,13 @@ const Header = ({ menuItems }) => {
             <IoMdHelpCircleOutline />
             <p className="text-xs">Help</p>
           </div>
+        </div> */}
+        <div className="flex flex-row  gap-1 text-textSecondaryColor">
+          <div className="flex flex-col items-center">
+          <MdOutlineChat className="" />
+            <p className="text-xs">Live Chat</p>
+          </div>
+          
         </div>
       </div>
     </div>
