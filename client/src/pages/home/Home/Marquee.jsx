@@ -5,7 +5,7 @@ const Marquee = () => {
     <div className="relative  border-x-customWhite flex items-center  overflow-hidden py-1">
       {/* News Label */}
       <div className="absolute left-1 flex items-center   rounded-full text-customWhite px-2 py-1">
-        <PiSpeakerHighFill className="text-green" />
+        <PiSpeakerHighFill className="text-textSecondaryColor" />
       </div>
 
       {/* Marquee Container */}

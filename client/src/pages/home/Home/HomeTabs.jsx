@@ -28,7 +28,7 @@ const HomeTabs = () => {
   return (
     <div className="px-2">
       {/* Category Tabs */}
-      <div className="flex sticky top-0 bg-black z-10 flex-row items-center px-2 gap-x-4 overflow-x-auto">
+      <div className="flex sticky top-0 bg-primary-primaryColor z-10 flex-row items-center px-2 gap-x-4 overflow-x-auto">
         {allCategories?.map((category) => (
           <motion.div
             key={category._id}
@@ -64,7 +64,7 @@ const HomeTabs = () => {
       </div>
 
       {/* Selected Category Title */}
-      <h2 className="text-white border-l-4 px-2 border-green text-base font-bold mt-4">
+      <h2 className="text-white border-l-4 px-2 border-textSecondaryColor text-base font-bold mt-4">
         {activeTab}
       </h2>
 

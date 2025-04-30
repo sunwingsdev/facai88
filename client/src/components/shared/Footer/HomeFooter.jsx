@@ -3,8 +3,8 @@ import { useState } from "react";
 const HomeFooter = () => {
   const [showMore, setShowMore] = useState(false);
   return (
-    <div className="bg-black ">
-      <div className="bg-black text-white  px-2 overflow-x-hidden  relative">
+    <div className="bg-primary-primaryColor ">
+      <div className="bg-primary-primaryColor text-white  px-2 overflow-x-hidden  relative">
         <h2 className="text-lg font-bold">
           {import.meta.env.VITE_SITE_NAME} বাংলাদেশ - বাংলাদেশের শীর্ষস্থানীয়
           অনলাইন গেমিং এবং বেটিং প্ল্যাটফর্ম
@@ -97,7 +97,7 @@ const HomeFooter = () => {
                 </button>
               </div>
             ) : (
-              <div className="w-full  flex justify-center  absolute bottom-1 left-1/2 -translate-x-1/2 bg-black py-[3px] opacity-80">
+              <div className="w-full  flex justify-center  absolute bottom-1 left-1/2 -translate-x-1/2 bg-primary-primaryColor py-[3px] opacity-80">
                 <button className=" bg-commonYellow whitespace-nowrap text-sm text-black py-1 px-4 rounded-sm">
                   Show More
                 </button>
