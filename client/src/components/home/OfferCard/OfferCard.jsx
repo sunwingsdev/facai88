@@ -8,7 +8,7 @@ const OfferCard = ({ offer }) => {
   return (
     <div className="bg-[#8e8e8e] rounded-md">
       <img
-        className="rounded-t-md"
+        className="rounded-t-md h-40 w-full"
         src={`${import.meta.env.VITE_BASE_API_URL}${image}`}
         alt=""
       />
