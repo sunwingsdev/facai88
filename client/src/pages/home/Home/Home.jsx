@@ -15,7 +15,7 @@ const Home = () => {
   ];
   return (
     <>
-      <div className="md:bg-[#4e4e4e] bg-black hidden md:block">
+      <div className="bg-primary-primaryColor hidden md:block">
         <BannerSlider />
 
         <Container>

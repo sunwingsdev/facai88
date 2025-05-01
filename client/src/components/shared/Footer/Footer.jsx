@@ -5,7 +5,7 @@ import FooterTop from "./FooterTop";
 
 const Footer = () => {
   return (
-    <div className="bg-black md:bg-[#353535] ">
+    <div className="bg-primary-primaryColor ">
       <Container>
         <FooterTop />
         <FooterMiddle />

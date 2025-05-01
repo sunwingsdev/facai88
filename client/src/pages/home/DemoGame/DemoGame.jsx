@@ -148,7 +148,7 @@ const DemoGame = () => {
   const selectedGame = allHomeGames?.find((game) => game._id == id);
 
   return (
-    <div className="bg-[#4e4e4e]">
+    <div className="bg-primary-primaryColorTwo">
       <Container>
         {/* Ensure demo link is available before embedding */}
         {selectedGame?.link ? (
