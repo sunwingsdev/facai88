@@ -72,11 +72,11 @@ const Header = ({ menuItems }) => {
         {/* Sidebar (Menu) */}
         <div
           ref={menuRef}
-          className={`fixed z-50 top-0 left-0 h-screen overflow-y-auto pb-4 w-[50%] text-white shadow-lg transform bg-[#252525] backdrop-blur-lg ${
+          className={`fixed z-50 top-0 left-0 h-screen overflow-y-auto pb-4 w-[50%] text-white shadow-lg transform bg-componentBgPrimary backdrop-blur-lg ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300 ease-in-out lg:hidden`}
         >
-          <div className="flex flex-col items-center gap-y-2 py-3">
+          <div className=" hidden flex-col items-center gap-y-2 py-3">
             <Link to="/">
               <img
                 src={`${import.meta.env.VITE_BASE_API_URL}${
@@ -99,7 +99,7 @@ const Header = ({ menuItems }) => {
                   <Link onClick={() => handleClick(index)}>
                     <li
                       className={`flex items-center border-b border-white ${
-                        openIndex === index ? "bg-tab-background" : ""
+                        openIndex === index ? "bg-componentBgSecondary" : ""
                       } ${
                         [13, 14, 15, 16].includes(index)
                           ? "border w-36 mx-auto text-left text-white space-x-1 font-bold"
@@ -137,7 +137,7 @@ const Header = ({ menuItems }) => {
               animate={{ x: 0, opacity: 1, scale: 1 }}
               exit={{ x: "-50%", opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="fixed h-screen z-50 overflow-y-auto left-[50%] top-0 flex flex-col items-center space-y-2 bg-[#333333] p-2 shadow-lg"
+              className="fixed h-screen z-50 overflow-y-auto left-[50%] top-0 flex flex-col items-center space-y-2 bg-componentBgSecondary p-2 shadow-lg"
             >
               {/* যদি এক্সক্লুসিভ ক্যাটেগরি হয়, তাহলে allHomeGames থেকে ফিল্টার করে দেখাবে */}
               {menuItems[openIndex]?.name === "এক্সক্লুসিভ"

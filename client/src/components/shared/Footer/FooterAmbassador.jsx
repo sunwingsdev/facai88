@@ -53,12 +53,12 @@ const FooterAmbassador = () => {
         </h2>
         <div className="grid grid-cols-2  gap-4 ">
           {sponsorshipData.map((data, index) => (
-            <div key={index} className="flex flex-row items-center gap-1">
+            <div key={index} className="flex flex-col  gap-1">
               <img src={data.logo} alt="" className="w-20 h-10" />
-              <div className="text-white flex flex-col text-[10px]">
-                <h2>{data.title}</h2>
-                <div className="opacity-50">
-                  <p>{data.date}</p>
+              <div className="text-white text-opacity-50 flex flex-col text-[10px]">
+                <h2 className="">{data.title}</h2>
+                <div className="">
+                  <p>{data.modelName}</p>
                 </div>
               </div>
             </div>

@@ -81,14 +81,28 @@ import Pages from "@/pages/pages-on-footer/Pages";
 import WithdrawMethod from "@/pages/dashboard/BankingWithdraw/WithdrawMethod";
 import EditWithdrawMethodForm from "@/components/dashboard/bankingWithdraw/withdrawMethod/EditWithdrawMethodForm";
 import SiteInfo from "@/pages/siteInfo/SiteInfo";
+import RegisterFacai from "@/pages/home/Register/RegisterFacai";
+import LoginFacai from "@/pages/home/Login/LoginFacai";
+import ForgetPassword from "@/pages/home/ForgetPassword/ForgetPassword";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/register", element: <Register /> },
+      // { path: "/", element: <Home /> },
+      {
+        path: '/',
+        element: <Home />,
+        loader: async () => {
+          await new Promise(resolve => setTimeout(resolve, 2000)); // delay for 2 sec
+          return null;
+        }
+      },
+      //  { path: "/register", element: <Register /> },
+      { path: "/register", element: <RegisterFacai /> },
+      { path: "/login", element: <LoginFacai /> },
+      { path: "/forgetpassword", element: <ForgetPassword /> },
       { path: "/category/:category", element: <CategoryPage /> },
       { path: "/category/demo/:id", element: <DemoGame /> },
       { path: "/promotional-offer", element: <PromotionalOffer /> },

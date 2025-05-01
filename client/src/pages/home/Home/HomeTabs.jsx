@@ -26,16 +26,16 @@ const HomeTabs = () => {
   );
 
   return (
-    <div className="px-2">
+    <div className=" ">
       {/* Category Tabs */}
-      <div className="flex sticky top-0 bg-primary-primaryColor z-10 flex-row items-center px-2 gap-x-4 overflow-x-auto">
+      <div className="flex sticky top-0 bg-componentBgPrimary z-10 flex-row items-center px-2 gap-x-4 overflow-x-auto">
         {allCategories?.map((category) => (
           <motion.div
             key={category._id}
             className={`flex flex-col items-center cursor-pointer relative 
           ${
             category.name === activeTab
-              ? "bg-tab-background p-2"
+              ? "bg-componentBgSecondary p-2"
               : "hover:bg-tab-background p-2"
           }`}
             onClick={() => setActiveTab(category.name)}
@@ -80,7 +80,7 @@ const HomeTabs = () => {
             {activeTab === "এক্সক্লুসিভ" ? (
               // এক্সক্লুসিভ হলে গেম দেখাবে
               filteredGames?.length > 0 ? (
-                <div className="grid grid-cols-3 justify-items-center">
+                <div className="grid bg-componentBgSecondary grid-cols-3 justify-items-center">
                   {filteredGames.map((game) => (
                     <Link
                       to={`/category/demo/${game._id}`}
@@ -112,7 +112,7 @@ const HomeTabs = () => {
                   <Link
                     to={`/category/${subCategory.category}`}
                     key={subCategory._id}
-                    className="flex flex-col p-2 w-full justify-center items-center bg-gray-800"
+                    className="flex flex-col p-2 w-full justify-center items-center bg-componentBgSecondary"
                   >
                     <img
                       src={`${import.meta.env.VITE_BASE_API_URL}${

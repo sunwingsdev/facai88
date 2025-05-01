@@ -17,6 +17,8 @@ export default {
       colors: {
         background: "hsl(var(--background))",
         backgroundSecondaryColor:"#C9A33D",
+        componentBgPrimary:"#222843",
+        componentBgSecondary:"#243254",
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -59,6 +61,11 @@ export default {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+        
+      },
+      backgroundImage: {
+        'white-to-darkblue': 'linear-gradient(to right, rgba(255, 255, 255, 0.3), #243254)',
+        'white-to-gold': 'linear-gradient(to right, rgba(255,255,255,0.2), #C9A33Dcc)',
       },
     },
   },

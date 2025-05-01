@@ -79,7 +79,7 @@ const FooterLast = () => {
         </div>
       </div>
 
-      <div className="text-white text-opacity-50 text-xs   gap-x-3 py-4 border-t border-white border-opacity-50">
+      <div className="text-white hidden text-opacity-50 text-xs   gap-x-3 py-4 border-t border-white border-opacity-50">
         <p>
           <Link className="text-textSecondaryColor">
             {import.meta.env.VITE_SITE_NAME}.com
