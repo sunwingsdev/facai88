@@ -12,7 +12,7 @@ import { LanguageContext } from "@/Context/LanguageContext";
 import { FaChevronLeft } from "react-icons/fa";
 import RegisterModal from "./RegisterModal";
 
-const RegisterFacai = ({ handleLoginOpen }) => {
+const RegisterFacai = ({handleLoginOpen}) => {
   const { language } = useContext(LanguageContext);
   const [step, setStep] = useState(0); // <-- Start from Step 0
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -32,7 +32,6 @@ const RegisterFacai = ({ handleLoginOpen }) => {
     verificationCode: "",
     agreed: false,
   });
-  console.log(formData);
   const countryCodes = [
     { code: "+880", country: "BD", flag: bdImage },
     { code: "+91", country: "IN", flag: INImage },
@@ -143,10 +142,12 @@ const RegisterFacai = ({ handleLoginOpen }) => {
   return (
     <div>
       {/* largeDevice */}
-      <div className="py-5 hidden md:block bg-primary-primaryColor text-white">
-        <div className="flex flex-col lg:flex-row gap-4 p-8">
+      <div className="bg-primary-primaryColor">
+      
+      <div className="py-5 hidden md:block  mx-auto lg:max-w-6xl  text-white">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-0   p-8">
           {/* Image Section */}
-          <div className="lg:w-full">
+          <div className="lg:w-full lg:h-[600px]">
             <img
               src={signUpImage}
               alt="Sign Up Illustration"
@@ -158,7 +159,7 @@ const RegisterFacai = ({ handleLoginOpen }) => {
           {/* Form Section */}
           <form
             onSubmit={handleSubmit}
-            className="lg:w-2/3 bg-componentBgPrimary text-sm p-10 space-y-6"
+            className="lg:w-2/3 lg:h-[800px] bg-componentBgPrimary text-sm p-10 space-y-6"
           >
             {/* Step 0 - Referral and Currency */}
             {step === 0 && (
@@ -276,6 +277,7 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? (
+                        
                         <FaEye className="text-textPrimary " />
                       ) : (
                         <FaEyeSlash className="text-textPrimary " />
@@ -457,9 +459,12 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                         : "ইতিমধ্যে একটি সদস্যপদ আছে?"}
                     </p>
                     <Link to="/login">
-                      <p className="text-textSecondaryColor cursor-pointer underline">
-                        {language === "en" ? "Log in" : "প্রবেশ করুন"}
-                      </p>
+                    <p
+                      className="text-textSecondaryColor cursor-pointer underline"
+                      
+                    >
+                      {language === "en" ? "Log in" : "প্রবেশ করুন"}
+                    </p>
                     </Link>
                   </div>
                 )}
@@ -468,6 +473,10 @@ const RegisterFacai = ({ handleLoginOpen }) => {
           </form>
         </div>
       </div>
+        
+      </div>
+
+
 
       {/* phoneDevice */}
       <div className="pb-14 md:hidden   mx-auto lg:max-w-6xl bg-primary-primaryColorTwo text-white">
@@ -565,6 +574,7 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                   {showPassword ? (
                     <FaEye className="text-textPrimary " />
                   ) : (
+                    
                     <FaEyeSlash className="text-textPrimary " />
                   )}
                 </div>
