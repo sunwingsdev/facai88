@@ -1,17 +1,7 @@
 import InfoMobileMenu from "@/components/InfoLayout/InfoMobileMenu";
 import InfoSidebar from "@/components/InfoLayout/InfoSidebar";
 import { useState } from "react";
-import { BsBank, BsFront, BsPiggyBank, BsShop } from "react-icons/bs";
-import { FaAffiliatetheme, FaUsers } from "react-icons/fa";
-import { GiGamepadCross, GiRibbonMedal } from "react-icons/gi";
-import { IoMdHome } from "react-icons/io";
-import {
-  IoGameController,
-  IoLogoWechat,
-  IoSettingsSharp,
-} from "react-icons/io5";
-import { PiCashRegister } from "react-icons/pi";
-import { SlGameController } from "react-icons/sl";
+
 import { Outlet } from "react-router-dom";
 
 const InfoLayout = () => {

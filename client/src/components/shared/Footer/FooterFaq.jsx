@@ -1,35 +1,40 @@
 import { LanguageContext } from "@/Context/LanguageContext";
-import React, { useContext } from "react";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+
+const menuItems = [
+  { label: { bn: "আমাদের সম্পর্কে", en: "About Us" }, to: "/info/about-us" },
+  {
+    label: { bn: "গোপনীয়তা নীতি", en: "Privacy Policy" },
+    to: "/info/privacy-policy",
+  },
+
+  { label: { bn: "নিরাপত্তা", en: "Security" }, to: "/info/security" },
+  {
+    label: { bn: "দায়িত্বশীল গেমিং", en: "Responsible Gaming" },
+    to: "/info/responsible-gaming",
+  },
+
+  {
+    label: { bn: "প্রায়শই জিজ্ঞাসিত প্রশ্নাবলী", en: "FAQ" },
+    to: "/info/faq",
+  },
+];
 
 const FooterFaq = () => {
   const { language } = useContext(LanguageContext);
 
-  const datas = language === "bn"
-    ? [
-        "দায়িত্বশীল গেমিং",
-        "আমাদের সম্পর্কে",
-        "নিরাপত্তা",
-        "প্রাইভেসি নীতিমালা",
-        "সাধারণ প্রশ্নাবলি",
-      ]
-    : [
-        "Responsible Gaming",
-        "About Us",
-        "Security",
-        "Privacy Policy",
-        "FAQ",
-      ];
-
   return (
     <div className="border-t mt-5 py-4 px-2 border-white border-opacity-50">
-      <div className="grid grid-cols-3 gap-2 items-center">
-        {datas.map((data, index) => (
-          <div
+      <div className="grid grid-cols-3 gap-5 items-center">
+        {menuItems.map((item, index) => (
+          <Link
             key={index}
-            className="text-textSecondaryColor border-l-2 border-textSecondaryColor text-xs px-2"
+            href={item.to}
+            className="text-textSecondaryColor border-l-2 border-textSecondaryColor text-xs px-2 hover:underline"
           >
-            <p>{data}</p>
-          </div>
+            {item.label[language] || item.label.en}
+          </Link>
         ))}
       </div>
     </div>
