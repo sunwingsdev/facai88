@@ -154,7 +154,7 @@ const DynamicTable = ({ columns, data, loading }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table-auto border-collapse border border-gray-300 w-full text-nowrap">
-        <thead className="sm:text-xs md:text-base bg-[#14815f]">
+        <thead className="sm:text-xs md:text-base bg-bottomNavBgColor">
           <tr className="text-white">
             {columns.map((col, index) => (
               <th
@@ -180,7 +180,7 @@ const DynamicTable = ({ columns, data, loading }) => {
             className={`px-3 py-1 rounded border ${
               currentPage === 1
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-[#14815f] text-white"
+                : "bg-bottomNavBgColor text-white"
             }`}
           >
             Previous
@@ -193,7 +193,7 @@ const DynamicTable = ({ columns, data, loading }) => {
               className={`px-3 py-1 rounded border ${
                 currentPage === page
                   ? "bg-[#ffe43c] text-black"
-                  : "bg-[#14815f] text-white"
+                  : "bg-primary-primaryColorTwo text-white"
               }`}
             >
               {page}
@@ -206,7 +206,7 @@ const DynamicTable = ({ columns, data, loading }) => {
             className={`px-3 py-1 rounded border ${
               currentPage === totalPages
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-[#14815f] text-white"
+                : "bg-bottomNavBgColor text-white"
             }`}
           >
             Next

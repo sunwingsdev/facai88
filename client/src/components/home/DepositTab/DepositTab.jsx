@@ -214,7 +214,7 @@ const DepositTab = () => {
 
       {/* Selected Promotion Display */}
       {formData.promotion && (
-        <div className="mt-4 bg-green-700 rounded text-white flex items-center gap-2">
+        <div className="mt-4 bg-primary-primaryColor rounded text-white flex items-center gap-2">
           <div className="w-2/5 md:w-2/3 p-2">
             <img
               src={`${import.meta.env.VITE_BASE_API_URL}${

@@ -217,7 +217,7 @@ const FooterMiddle = () => {
               <h2>{service.title}</h2>
               <p className="text-[#999] text-[12px]">{service.subtitle}</p>
               <Link to={service.route}>
-                <p className="hover:text-blue-500 hover:underline">
+                <p className="hover:text-textSecondaryColor hover:underline">
                   {service.button}
                 </p>
               </Link>
@@ -244,13 +244,13 @@ const FooterMiddle = () => {
           contentWidth={60}
         />
       </div>
-      <div className="order-2">
+      {/* <div className="order-2">
         <HeadingImageContent
           heading="ব্র্যান্ড অ্যাম্বাসেডর'স"
           contents={brandAmbassadors}
           contentWidth={30}
         />
-      </div>
+      </div> */}
 
       {/* <div className="pt-4 flex flex-wrap gap-2">
         {allPages?.map((page) => (

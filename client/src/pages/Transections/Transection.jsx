@@ -138,7 +138,7 @@ const Transection = () => {
   return (
     <div className="space-y-2 text-nowrap">
       <WalletSection />
-      <div className="bg-[#363838] p-2 text-white rounded-md">
+      <div className="bg-primary-primaryColorTwo p-2 text-white rounded-md">
         <div className="border-b-2 border-green-300 border-dotted">
           <h1 className="p-2 text-green-300 ">ট্রানজেকশন</h1>
         </div>
@@ -221,7 +221,7 @@ const Transection = () => {
         </div>
       </div>
       {/* table area */}
-      <div className="bg-[#363838] p-4 text-white rounded-md mt-4">
+      <div className="bg-primary-primaryColorTwo p-4 text-white rounded-md mt-4">
         <div>
           <h1 className="p-2">রেকর্ড</h1>
         </div>

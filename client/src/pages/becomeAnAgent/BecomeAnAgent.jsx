@@ -51,11 +51,11 @@ const BecomeAnAgent = () => {
   };
 
   return (
-    <div className="bg-[#212121]">
+    <div className="bg-primary-primaryColor">
       <div className="becomeAnAgent">
         {/* Start Top menu */}
         <div className="relative w-full">
-          <div className="bg-[#212121] flex justify-between items-center p-4 shadow-md fixed top-0 left-0 w-full z-50">
+          <div className="bg-primary-primaryColorTwo flex justify-between items-center p-4 shadow-md fixed top-0 left-0 w-full z-50">
             {/* Logo Section with Image */}
             <div className="flex items-center gap-1 px-2 py-0.5 rounded-lg">
               {isLoading ? (

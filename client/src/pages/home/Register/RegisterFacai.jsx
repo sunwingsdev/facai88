@@ -286,7 +286,7 @@ const RegisterFacai = ({handleLoginOpen}) => {
                   </div>
                 </div>
 
-                {/* <div>
+                <div>
                   <h3 className="text-white mb-1">{t.referralCode}</h3>
                   <input
                     type="text"
@@ -296,7 +296,7 @@ const RegisterFacai = ({handleLoginOpen}) => {
                     value={formData.referralCode}
                     onChange={handleChange}
                   />
-                </div> */}
+                </div>
               </>
             )}
 
