@@ -12,7 +12,7 @@ import { LanguageContext } from "@/Context/LanguageContext";
 import { FaChevronLeft } from "react-icons/fa";
 import RegisterModal from "./RegisterModal";
 
-const RegisterFacai = ({handleLoginOpen}) => {
+const RegisterFacai = ({ handleLoginOpen }) => {
   const { language } = useContext(LanguageContext);
   const [step, setStep] = useState(0); // <-- Start from Step 0
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -32,6 +32,7 @@ const RegisterFacai = ({handleLoginOpen}) => {
     verificationCode: "",
     agreed: false,
   });
+  console.log(formData);
   const countryCodes = [
     { code: "+880", country: "BD", flag: bdImage },
     { code: "+91", country: "IN", flag: INImage },
@@ -142,8 +143,8 @@ const RegisterFacai = ({handleLoginOpen}) => {
   return (
     <div>
       {/* largeDevice */}
-      <div className="py-5 hidden md:block  mx-auto lg:max-w-6xl bg-primary-primaryColor text-white">
-        <div className="flex flex-col lg:flex-row gap-4 lg:border-4 border-textPrimary p-8">
+      <div className="py-5 hidden md:block bg-primary-primaryColor text-white">
+        <div className="flex flex-col lg:flex-row gap-4 p-8">
           {/* Image Section */}
           <div className="lg:w-full">
             <img
@@ -275,7 +276,6 @@ const RegisterFacai = ({handleLoginOpen}) => {
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? (
-                        
                         <FaEye className="text-textPrimary " />
                       ) : (
                         <FaEyeSlash className="text-textPrimary " />
@@ -457,12 +457,9 @@ const RegisterFacai = ({handleLoginOpen}) => {
                         : "ইতিমধ্যে একটি সদস্যপদ আছে?"}
                     </p>
                     <Link to="/login">
-                    <p
-                      className="text-textSecondaryColor cursor-pointer underline"
-                      
-                    >
-                      {language === "en" ? "Log in" : "প্রবেশ করুন"}
-                    </p>
+                      <p className="text-textSecondaryColor cursor-pointer underline">
+                        {language === "en" ? "Log in" : "প্রবেশ করুন"}
+                      </p>
                     </Link>
                   </div>
                 )}
@@ -471,8 +468,6 @@ const RegisterFacai = ({handleLoginOpen}) => {
           </form>
         </div>
       </div>
-
-
 
       {/* phoneDevice */}
       <div className="pb-14 md:hidden   mx-auto lg:max-w-6xl bg-primary-primaryColorTwo text-white">
@@ -570,7 +565,6 @@ const RegisterFacai = ({handleLoginOpen}) => {
                   {showPassword ? (
                     <FaEye className="text-textPrimary " />
                   ) : (
-                    
                     <FaEyeSlash className="text-textPrimary " />
                   )}
                 </div>

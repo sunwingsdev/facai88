@@ -23,7 +23,7 @@ const Deposit = () => {
       <WalletSection />
       <div className="flex justify-center gap-3 items-start">
         {/* Tabs Section */}
-        <div className="bg-[#313131] px-3 py-4 rounded space-y-4 w-full md:w-4/5">
+        <div className="bg-primary-primaryColorTwo px-3 py-4 rounded space-y-4 w-full md:w-4/5">
           <div className="flex items-center justify-between">
             <p className="px-6 border-s-8 border-[#26ffbc] text-[#26ffbc] w-1/2 hidden md:block">
               ফান্ডস

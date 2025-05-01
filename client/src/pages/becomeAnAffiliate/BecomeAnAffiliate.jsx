@@ -19,7 +19,7 @@ const BecomeAnAffiliate = () => {
     location.pathname === "/login" || location.pathname === "/sign";
 
   return (
-    <div className="flex flex-col min-h-screen bg-green-800 text-white">
+    <div className="flex flex-col min-h-screen bg-primary-primaryColorTwo text-white">
       {/* Show Header only if not on Login or Sign Up page */}
       {!isLoginOrSignUpPage && <AffiliateHeader />}
 
