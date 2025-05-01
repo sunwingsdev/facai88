@@ -81,6 +81,12 @@ import Pages from "@/pages/pages-on-footer/Pages";
 import WithdrawMethod from "@/pages/dashboard/BankingWithdraw/WithdrawMethod";
 import EditWithdrawMethodForm from "@/components/dashboard/bankingWithdraw/withdrawMethod/EditWithdrawMethodForm";
 import SiteInfo from "@/pages/siteInfo/SiteInfo";
+import ResponsibleGameing from "@/pages/extra/ResponsibleGameing";
+import InfoLayout from "@/layouts/InfoLayout";
+import AboutUs from "@/pages/extra/AboutUs";
+import Security from "@/pages/extra/Security";
+import PrivacyPolicyInfo from "@/pages/extra/PrivacyPolicyInfo";
+import FaqInfo from "@/pages/extra/FaqInfo";
 
 const router = createBrowserRouter([
   {
@@ -126,7 +132,7 @@ const router = createBrowserRouter([
           { path: "transaction", element: <Transection /> },
         ],
       },
-      { path: "/info", element: <SiteInfo /> },
+      // { path: "/info", element: <SiteInfo /> },
     ],
   },
 
@@ -303,6 +309,18 @@ const router = createBrowserRouter([
       { path: "", element: <AffiliatesHome /> },
       { path: "profile/:id", element: <AffiliateProfile /> },
       { path: "myaffiliatelinks/:id", element: <MyAffiliateLinks /> },
+    ],
+  },
+
+  {
+    path: "/info",
+    element: <InfoLayout />,
+    children: [
+      { path: "responsible-gaming", element: <ResponsibleGameing /> },
+      { path: "about-us", element: <AboutUs /> },
+      { path: "security", element: <Security /> },
+      { path: "privacy-policy", element: <PrivacyPolicyInfo /> },
+      { path: "faq", element: <FaqInfo /> },
     ],
   },
 ]);
