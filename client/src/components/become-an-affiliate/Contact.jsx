@@ -11,7 +11,7 @@ const Contact = () => {
   );
   return (
     <div>
-      <div className="h-auto pt-6 w-auto bg-green-900 py-10">
+      <div className="h-auto pt-6 w-auto bg-primary-primaryColor py-10">
         <div
           data-aos="zoom-in-up"
           className="flex-none md:flex-row lg:flex justify-center mb-12"
