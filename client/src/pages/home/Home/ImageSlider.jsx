@@ -1,12 +1,4 @@
 import { useState, useEffect } from "react";
-
-// import slider1 from '../../assets/image_222005.jpg';
-import slider1 from "../../../assets/v2/image_222005.jpg";
-import slider2 from "../../../assets/v2/image_221470.jpg";
-import slider3 from "../../../assets/v2/image_222457.jpg";
-import slider4 from "../../../assets/v2/image_214956.jpg";
-import slider5 from "../../../assets/v2/image_176267.jpg";
-import slider6 from "../../../assets/v2/image_158140.jpg";
 import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 const ImageSlider = () => {
@@ -18,8 +10,7 @@ const ImageSlider = () => {
       control.category === "slider" &&
       control.isSelected === true
   );
-  console.log(bannerImages);
-  const slides = [slider1, slider2, slider3, slider4, slider5, slider6];
+
   const [currentIndex, setCurrentIndex] = useState(1);
   const totalSlides = bannerImages?.length;
 

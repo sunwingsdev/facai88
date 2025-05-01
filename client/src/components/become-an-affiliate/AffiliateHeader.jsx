@@ -41,7 +41,7 @@ const AffiliateHeader = () => {
 
   return (
     <>
-      <header className="bg-backgroundImageRed text-white shadow-md py-4 pl-4 lg:pl-0 w-full z-10">
+      <header className="bg-primary-primaryColorTwo text-white shadow-md py-4 pl-4 lg:pl-0 w-full z-10">
         <div className="container mx-auto  flex justify-around lg:justify-between lg:px-28">
           {/* Menu Icon Button */}
           <div className="lg:hidden flex items-center">
@@ -104,7 +104,7 @@ const AffiliateHeader = () => {
 
           <div className="flex-none gap-x-4 flex items-center font-sans sans-serif">
             <Link to="/affiliate/login">
-              <button className="md:w-16 lg:w-24 sm:h-6 md:h-8 lg:h-10 bg-green-400 hover:bg-yellow-400 hover:text-black sm:text-sm lg:text-base text-white rounded-sm border-none font-medium py-1 px-4 poppins sans-serif">
+              <button className="md:w-16 lg:w-24 sm:h-6 md:h-8 lg:h-10 bg-white hover:bg-yellow-400 hover:text-black sm:text-sm lg:text-base text-black rounded-sm border-none font-medium py-1 px-4 poppins sans-serif">
                 Login
               </button>
             </Link>

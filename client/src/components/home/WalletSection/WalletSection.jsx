@@ -38,7 +38,7 @@ const WalletSection = () => {
   };
 
   return (
-    <div className="bg-[#313131] px-3 py-2 rounded items-center justify-between hidden md:flex">
+    <div className="bg-primary-primaryColorTwo px-3 py-2 rounded items-center justify-between hidden md:flex">
       <div>
         <p className="text-[#999] text-sm">মেইন ওয়ালেট</p>
         <p className="text-[#76bd6a] text-2xl inline-flex items-center gap-3">
