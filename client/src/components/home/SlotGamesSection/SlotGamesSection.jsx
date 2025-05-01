@@ -21,15 +21,15 @@ const SlotGamesSection = () => {
 
   return (
     <Tabs className="mt-5">
-      <div className="bg-[#222843] flex items-center justify-between px-4 mb-4">
-        <h1 className="text-[#c9a33d]">Slot</h1>
+      <div className="bg-bottomNavBgColor flex items-center justify-between px-4 mb-4">
+        <h1 className="text-textSecondaryColor">Slot</h1>
         <div>
           <div>
             <TabList className="flex items-center">
               {slotSubCategories?.map((subCat) => (
                 <Tab
                   key={subCat?._id}
-                  className="text-white hover:text-[#c9a33d] cursor-pointer border-b-4 border-transparent hover:border-[#c9a33d] py-4 px-4"
+                  className="text-white hover:text-textSecondaryColor cursor-pointer border-b-4 border-transparent hover:border-textSecondaryColor py-4 px-4"
                   selectedClassName="text-[#c9a33d] border-[#c9a33d] outline-none"
                 >
                   {subCat?.name}
@@ -92,14 +92,18 @@ const SlotGamesSection = () => {
             {[...Array(2)].map((_, index) => (
               <div key={index} className="space-y-3">
                 {[...Array(5)].map((_, i) => (
-                  <div key={i} className="bg-[#222843] p-2 w-full rounded-md">
+                  <div
+                    key={i}
+                    className="bg-bottomNavBgColor p-2 w-full rounded-md"
+                  >
                     <div className="flex flex-col items-start gap-2">
                       <p className="text-base text-white">Player: player 01</p>
                       <p className="text-sm text-white">
-                        Win: <span className="text-[#c9a33d]">1000 $</span>
+                        Win:{" "}
+                        <span className="text-textSecondaryColor">1000 $</span>
                       </p>
                       <p className="text-xs text-white">Agent Ace</p>
-                      <button className="bg-[#c9a33d] px-3 py-1 text-sm rounded-md text-white">
+                      <button className="bg-backgroundSecondaryColor px-3 py-1 text-sm rounded-md text-white">
                         Play it
                       </button>
                     </div>

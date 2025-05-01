@@ -99,7 +99,7 @@ const NavMiddle = ({ navItems }) => {
   };
 
   return (
-    <div className="bg-black md:bg-gradient-to-b from-[#1aaa7c] to-[#14815f] py-3">
+    <div className="bg-primary-primaryColorTwo py-3">
       <Container>
         <div className="flex items-center justify-between text-[#14815f]">
           {/* Menu for mobile */}

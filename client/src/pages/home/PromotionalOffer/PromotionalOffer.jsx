@@ -42,7 +42,7 @@ const PromotionalOffer = () => {
   return (
     <div>
       <SecondaryBanner image={promotionImg} />
-      <div className="bg-[#4A4A4A]">
+      <div className="bg-primary-primaryColorTwo">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-6">
             {promotions?.map((offer) => (
