@@ -62,7 +62,7 @@ const FooterSponsorship = () => {
           <div key={index} className="flex flex-row items-center gap-1">
             <img src={data.logo} alt="" className="w-[15%]" />
             <div className="text-white flex flex-col text-[10px]">
-              <h2>{data.title}</h2>
+              <h2 className="opacity-80" >{data.title}</h2>
               <div className="opacity-50">
                 <p>{data.text}</p>
                 <p>{data.date}</p>

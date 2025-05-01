@@ -8,7 +8,7 @@ const HomeFavorite = () => {
   const images = [image1, image2, image3];
   const { language } = useContext(LanguageContext);
   return (
-    <div className="bg-tab-background mt-2 py-2">
+    <div className="bg-componentBgSecondary mt-2 py-2">
       <div className="px-2">
         <h2 className="text-white border-l-4 px-2 border-textSecondaryColor text-base font-bold my-4">
           {language === "en" ? "Favorites":"প্রিয় "}

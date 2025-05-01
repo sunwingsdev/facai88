@@ -53,7 +53,7 @@ const FooterDeposit = () => {
             <img
               src={image}
               alt=""
-              className={` ${index === 7 ? " mx-auto w-[25px]" : "w-16"} `}
+              className={` ${index === 7 ? " mx-auto w-[25px]" : "w-16"} opacity-50 `}
             />
           </div>
         ))}
@@ -67,7 +67,7 @@ const FooterDeposit = () => {
           <div className="flex flex-row items-center gap-3">
             {responsibleData.map((image, index) => (
               <div key={index}>
-                <img src={image} alt="" className="w-6" />
+                <img src={image} alt="" className="w-6 opacity-50" />
               </div>
             ))}
           </div>
@@ -80,7 +80,7 @@ const FooterDeposit = () => {
           <div className="grid grid-cols-4 w-[60%] items-center gap-2">
             {communityData.map((image, index) => (
               <div key={index}>
-                <img src={image} alt="" className="w-6" />
+                <img src={image} alt="" className="w-6 opacity-50" />
               </div>
             ))}
           </div>
