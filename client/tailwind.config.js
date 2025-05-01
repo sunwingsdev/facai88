@@ -16,7 +16,8 @@ export default {
       },
       colors: {
         background: "hsl(var(--background))",
-        backgroundSecondaryColor:"#C9A33D",
+        backgroundSecondaryColor: "#C9A33D",
+        bottomNavBgColor: "#2a3254",
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -29,8 +30,8 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          primaryColorTwo:"#191e32",
-          primaryColor:"#111421",
+          primaryColorTwo: "#191e32",
+          primaryColor: "#111421",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -49,7 +50,7 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         border: "hsl(var(--border))",
-        textSecondaryColor:"#C9A33D",
+        textSecondaryColor: "#C9A33D",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         chart: {

@@ -61,24 +61,24 @@ const GamesSection = ({ subCat }) => {
               placeholder="গেমস অনুসন্ধান করুন"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="px-4 py-2 rounded border-none focus:outline-none text-[#14805e] bg-[#f2f2f2]"
+              className="px-4 py-2 rounded border-none focus:outline-none text-black bg-[#f2f2f2]"
             />
           </div>
           <div className="flex items-center gap-2 text-[#666666] text-sm">
             <p>শ্রেণীবিভক্ত করা：</p>
-            <button className="text-sm flex items-center gap-1 justify-center py-4 hover:text-[#25775d] transition-colors ease-linear duration-200 hover:border-b-[4px] hover:border-b-[#25775d] hover:pb-[12px] ">
+            <button className="text-sm flex items-center gap-1 justify-center py-4 hover:text-textSecondaryColor transition-colors ease-linear duration-200 hover:border-b-[4px] hover:border-b-backgroundSecondaryColor hover:pb-[12px] ">
               <p className="py-1 px-5 border-r-[1px]">সুপারিশ করা</p>
             </button>
-            <button className="text-sm flex items-center gap-1 justify-center py-4 hover:text-[#25775d] transition-colors ease-linear duration-200 hover:border-b-[4px] hover:border-b-[#25775d] hover:pb-[12px] ">
+            <button className="text-sm flex items-center gap-1 justify-center py-4 hover:text-textSecondaryColor transition-colors ease-linear duration-200 hover:border-b-[4px] hover:border-b-backgroundSecondaryColor hover:pb-[12px] ">
               <p className="py-1 px-5 border-r-[1px]">সর্বশেষ</p>
             </button>
-            <button className="text-sm flex items-center gap-1 justify-center py-4 hover:text-[#25775d] transition-colors ease-linear duration-200 hover:border-b-[4px] hover:border-b-[#25775d] hover:pb-[12px] ">
+            <button className="text-sm flex items-center gap-1 justify-center py-4 hover:text-textSecondaryColor transition-colors ease-linear duration-200 hover:border-b-[4px] hover:border-b-backgroundSecondaryColor hover:pb-[12px] ">
               <p className="py-1 px-5 border-r-[1px]">A-Z</p>
             </button>
           </div>
         </div>
       </Container>
-      <div className="bg-black md:bg-[#137556]">
+      <div className="bg-backgroundSecondaryColor">
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex md:flex-wrap md:flex-row items-center gap-2 py-2 text-white overflow-x-auto w-full">
@@ -149,13 +149,13 @@ const GamesSection = ({ subCat }) => {
               ))}
             </div>
 
-            <button className="hidden md:block text-[#ffdf18] text-sm px-6 py-4 bg-gradient-to-b hover:bg-gradient-to-t from-[#17966e] hover: to-[#0f6046] transition-all ease-linear duration-200">
+            <button className="hidden md:block text-white text-sm px-6 py-4 bg-gradient-to-b hover:bg-gradient-to-t from-backgroundSecondaryColor hover: to-[#C9A34D] transition-all ease-linear duration-200 shadow-lg border border-white">
               আরও ফিল্টার
             </button>
           </div>
         </Container>
       </div>
-      <div className="bg-black md:bg-[#4e4e4e]">
+      <div className="bg-primary-primaryColorTwo">
         <Container>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3  py-6 ">
             {filteredGames?.map((game) => (

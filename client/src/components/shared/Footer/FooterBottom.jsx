@@ -37,7 +37,7 @@ const FooterBottom = () => {
             {routes.map(({ title, route }, i) => (
               <Link
                 to={route}
-                className="text-sm flex items-center gap-1 justify-center py-4 hover:text-[#25775d] transition-colors ease-linear duration-200"
+                className="text-sm flex items-center gap-1 justify-center py-4 hover:text-textSecondaryColor transition-colors ease-linear duration-200"
                 key={title}
               >
                 <p className={`py-1 px-5 ${i !== 0 && "border-s-[1px]"}`}>
