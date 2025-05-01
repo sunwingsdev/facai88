@@ -12,7 +12,7 @@ const HomeFeatures = () => {
   const { language } = useContext(LanguageContext);
   const images = [image1, image2, image3, image4, image5, image6, image7];
   return (
-    <div className="bg-tab-background py-2">
+    <div className="bg-componentBgSecondary py-2">
       <h2 className="text-white border-l-4 px-2 border-textSecondaryColor text-base font-bold ">
                {language === "en" ? "Featured Games":"বৈশিষ্ট্যযুক্ত গেম "}
       </h2>

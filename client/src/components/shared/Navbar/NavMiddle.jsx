@@ -228,14 +228,31 @@ const NavMiddle = ({ navItems }) => {
             </div>
           ) : (
             <div className="md:flex items-center gap-8 text-white hidden">
+              <Link to="/login">
+              {/* <p
+                className="px-7 py-1  hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer"
+                // onClick={handleModalOpen}
+              >
+                লগ ইন
+              </p> */}
               <p
-                className="px-7 py-1 hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer"
-                onClick={handleModalOpen}
+                className="px-7 py-1 bg-white-to-darkblue   hover:border border border-transparent rounded cursor-pointer"
+                // onClick={handleModalOpen}
               >
                 লগ ইন
               </p>
-              <Link to="/register">
+              </Link>
+              {/* <Link to="/register">
                 <PrimaryButton>সাইন আপ</PrimaryButton>
+              </Link> */}
+              <Link to="/register">
+                
+                <p
+                className="px-7 py-1 bg-white-to-gold to-[#C9A33Dcc]  hover:border border border-transparent rounded cursor-pointer"
+                // onClick={handleModalOpen}
+              >
+               সাইন আপ
+              </p>
               </Link>
             </div>
           )}
