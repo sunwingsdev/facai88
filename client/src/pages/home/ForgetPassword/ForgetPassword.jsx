@@ -67,9 +67,11 @@ const ForgetPassword = ({ handleLoginOpenTwo }) => {
   return (
     <div className="">
       {/* large Device */}
-      <div className="py-5 hidden md:block mx-auto lg:max-w-6xl bg-primary-primaryColor text-white">
-        <div className="flex flex-col lg:flex-row gap-4 lg:border-4 border-textPrimary p-8">
-          <div className="lg:w-full">
+      <div className="bg-primary-primaryColor">
+       
+      <div className="py-5 hidden md:block mx-auto lg:max-w-6xl  text-white">
+        <div className="flex flex-col lg:items-center lg:flex-row gap-4 lg:gap-0  p-8">
+          <div className="lg:w-full lg:h-[600px]">
             <img
               src={signUpImage}
               alt="Sign Up Illustration"
@@ -77,7 +79,7 @@ const ForgetPassword = ({ handleLoginOpenTwo }) => {
             />
           </div>
 
-          <div className="lg:w-2/3 bg-componentBgPrimary text-white p-6 rounded-md space-y-6">
+          <div className="lg:w-2/3 lg:h-[800px] bg-componentBgPrimary text-white p-6 rounded-md space-y-6">
             {/* Tabs */}
             <div className="flex justify-between border-b border-white border-opacity-20 space-x-4 mb-4">
               <button
@@ -215,6 +217,8 @@ const ForgetPassword = ({ handleLoginOpenTwo }) => {
             </form>
           </div>
         </div>
+      </div>
+       
       </div>
       {/* small device */}
       <div className=" md:hidden min-h-screen bg-componentBgPrimary text-white ">

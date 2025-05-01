@@ -76,10 +76,12 @@ const LoginFacai = ({handleRegisterOpen,setIsModalForgetOpen}) => {
   return (
     <div>
       {/* largeDevice */}
-      <div className="py-5 hidden md:block  mx-auto lg:max-w-6xl bg-primary-primaryColor text-white">
-        <div className="flex flex-col lg:flex-row gap-4 lg:border-4 border-textPrimary p-8">
+      <div className="bg-primary-primaryColor">
+       
+      <div className="py-5 hidden md:block  mx-auto lg:max-w-6xl  text-white">
+        <div className="flex flex-col lg:items-center lg:flex-row gap-4 lg:gap-0  p-8">
           {/* Image Section */}
-          <div className="lg:w-full">
+          <div className="lg:w-full lg:h-[600px]">
             <img
               src={signUpImage}
               alt="Sign Up Illustration"
@@ -91,7 +93,7 @@ const LoginFacai = ({handleRegisterOpen,setIsModalForgetOpen}) => {
           {/* Form Section */}
           <form
             onSubmit={handleSubmit}
-            className="lg:w-2/3 bg-componentBgPrimary text-sm p-10 space-y-6"
+            className="lg:w-2/3 lg:h-[800px] bg-componentBgPrimary text-sm p-10 space-y-6"
           >
             <div>
                 <h3 className="text-2xl text-textSecondaryColor">Login</h3>
@@ -150,6 +152,8 @@ const LoginFacai = ({handleRegisterOpen,setIsModalForgetOpen}) => {
             </div>
           </form>
         </div>
+      </div>
+       
       </div>
 
       {/* phoneDevice */}
