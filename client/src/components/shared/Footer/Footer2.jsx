@@ -4,15 +4,16 @@ import FooterAmbassador from "./FooterAmbassador";
 import FooterDeposit from "./FooterDeposit";
 import FooterLast from "./FooterLast";
 import HomeFooter from "./HomeFooter";
+import FooterFaq from "./FooterFaq";
 
 const Footer2 = () => {
   const location = useLocation();
 
   const footerComponents = {
-    "/": <HomeFooter />,
+    // "/": <HomeFooter />,
   };
   return (
-    <div className="bg-black">
+    <div className="bg-primary-primaryColor">
       <div className="">
         <div className="py-4 ">
           {footerComponents[location.pathname] || null}
@@ -20,6 +21,9 @@ const Footer2 = () => {
         <FooterSponsorship />
         <FooterAmbassador />
         <FooterDeposit />
+        
+        <FooterFaq/>
+        
         <FooterLast />
       </div>
     </div>

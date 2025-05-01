@@ -5,8 +5,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+// import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useRef } from "react";
+import {
+  LiaLongArrowAltLeftSolid,
+  LiaLongArrowAltRightSolid,
+} from "react-icons/lia";
 
 export function CardSlider({ cards }) {
   const previousRef = useRef(null); // Ref for the previous button
@@ -14,15 +18,15 @@ export function CardSlider({ cards }) {
 
   return (
     <div className="rounded-lg">
-      <div className="bg-[#14805E] text-white p-3 flex justify-between items-center rounded-t-lg">
+      <div className="bg-bottomNavBgColor text-white p-3 flex justify-between items-center rounded-t-lg">
         <h2>প্রিয়</h2>
         {/* Functional custom buttons for carousel control */}
         <div className="hidden md:flex space-x-4 text-yellow-500">
           <button onClick={() => previousRef.current?.click()}>
-            <FaChevronLeft />
+            <LiaLongArrowAltLeftSolid className="text-2xl" />
           </button>
           <button onClick={() => nextRef.current?.click()}>
-            <FaChevronRight />
+            <LiaLongArrowAltRightSolid className="text-2xl" />
           </button>
         </div>
       </div>
@@ -43,10 +47,10 @@ export function CardSlider({ cards }) {
         </CarouselContent>
         {/* Hidden CarouselPrevious and CarouselNext buttons */}
         <CarouselPrevious ref={previousRef} className="hidden">
-          <FaChevronLeft />
+          <LiaLongArrowAltLeftSolid />
         </CarouselPrevious>
         <CarouselNext ref={nextRef} className="hidden">
-          <FaChevronRight />
+          <LiaLongArrowAltRightSolid />
         </CarouselNext>
       </Carousel>
     </div>

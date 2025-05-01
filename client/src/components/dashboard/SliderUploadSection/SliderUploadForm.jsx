@@ -54,7 +54,6 @@ const SliderUploadForm = ({ closeModal }) => {
             closeModal();
           }
         }
-        // eslint-disable-next-line no-unused-vars
       } catch (error) {
         setLoading(false);
         addToast("Failed to upload logo", {

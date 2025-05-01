@@ -13,7 +13,10 @@ export function BannerSlider() {
   const { data: homeControls } = useGetHomeControlsQuery();
 
   const bannerImages = homeControls?.filter(
-    (control) => control.category === "slider" && control.isSelected === true
+    (control) =>
+      control.page === "home" &&
+      control.category === "slider" &&
+      control.isSelected === true
   );
 
   const [api, setApi] = useState(null);
@@ -57,7 +60,7 @@ export function BannerSlider() {
           <CarouselItem key={image._id}>
             <div className="">
               <img
-                className="w-full max-h-[600px]"
+                className="w-full max-h-[37rem] h-[37rem]"
                 src={`${import.meta.env.VITE_BASE_API_URL}${image?.image}`}
                 alt={`Slide ${index + 1}`}
               />
@@ -79,7 +82,7 @@ export function BannerSlider() {
           />
         ))}
       </div>
-      <div className="bg-[#0D543E] opacity-90 text-white absolute bottom-0 w-full py-1">
+      <div className="bg-backgroundSecondaryColor opacity-90 text-white absolute bottom-0 w-full py-1">
         <Container>
           <div className="flex items-center gap-4">
             <HiMiniSpeakerWave className="text-xl md:text-3xl" />

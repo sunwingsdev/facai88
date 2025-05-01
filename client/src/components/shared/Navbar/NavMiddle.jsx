@@ -99,7 +99,7 @@ const NavMiddle = ({ navItems }) => {
   };
 
   return (
-    <div className="bg-black md:bg-gradient-to-b from-[#1aaa7c] to-[#14815f] py-3">
+    <div className="bg-primary-primaryColorTwo py-3">
       <Container>
         <div className="flex items-center justify-between text-[#14815f]">
           {/* Menu for mobile */}
@@ -176,7 +176,7 @@ const NavMiddle = ({ navItems }) => {
                 alt="Logo"
               />
             </Link>
-            <div className="flex gap-1 md:gap-2">
+            {/* <div className="flex gap-1 md:gap-2">
               {sponsors.map((sponsor) => (
                 <img
                   key={sponsor.id}
@@ -185,7 +185,7 @@ const NavMiddle = ({ navItems }) => {
                   alt="Sponsor"
                 />
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Desktop navigation and buttons */}

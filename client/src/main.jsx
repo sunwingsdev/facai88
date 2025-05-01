@@ -7,13 +7,16 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { ToastProvider } from "react-toast-notifications";
 import { PhotoProvider } from "react-photo-view";
+import LanguageProvider from "./Context/LanguageContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <PhotoProvider>
       <Provider store={store}>
         <ToastProvider>
-          <RouterProvider router={router} />
+        <LanguageProvider> 
+            <RouterProvider router={router} />
+          </LanguageProvider>
         </ToastProvider>
       </Provider>
     </PhotoProvider>
