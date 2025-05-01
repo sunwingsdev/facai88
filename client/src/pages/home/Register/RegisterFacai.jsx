@@ -142,10 +142,12 @@ const RegisterFacai = ({handleLoginOpen}) => {
   return (
     <div>
       {/* largeDevice */}
-      <div className="py-5 hidden md:block  mx-auto lg:max-w-6xl bg-primary-primaryColor text-white">
-        <div className="flex flex-col lg:flex-row gap-4 lg:border-4 border-textPrimary p-8">
+      <div className="bg-primary-primaryColor">
+      
+      <div className="py-5 hidden md:block  mx-auto lg:max-w-6xl  text-white">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-0   p-8">
           {/* Image Section */}
-          <div className="lg:w-full">
+          <div className="lg:w-full lg:h-[600px]">
             <img
               src={signUpImage}
               alt="Sign Up Illustration"
@@ -157,7 +159,7 @@ const RegisterFacai = ({handleLoginOpen}) => {
           {/* Form Section */}
           <form
             onSubmit={handleSubmit}
-            className="lg:w-2/3 bg-componentBgPrimary text-sm p-10 space-y-6"
+            className="lg:w-2/3 lg:h-[800px] bg-componentBgPrimary text-sm p-10 space-y-6"
           >
             {/* Step 0 - Referral and Currency */}
             {step === 0 && (
@@ -284,7 +286,7 @@ const RegisterFacai = ({handleLoginOpen}) => {
                   </div>
                 </div>
 
-                <div>
+                {/* <div>
                   <h3 className="text-white mb-1">{t.referralCode}</h3>
                   <input
                     type="text"
@@ -294,7 +296,7 @@ const RegisterFacai = ({handleLoginOpen}) => {
                     value={formData.referralCode}
                     onChange={handleChange}
                   />
-                </div>
+                </div> */}
               </>
             )}
 
@@ -470,6 +472,8 @@ const RegisterFacai = ({handleLoginOpen}) => {
             </div>
           </form>
         </div>
+      </div>
+        
       </div>
 
 
