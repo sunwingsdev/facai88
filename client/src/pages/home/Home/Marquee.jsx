@@ -1,11 +1,21 @@
 import { PiSpeakerHighFill } from "react-icons/pi";
+import announcementImage from "../../../assets/v2/announcement-icon.svg";
 
 const Marquee = () => {
   return (
     <div className="relative  border-x-customWhite flex items-center  overflow-hidden py-1">
       {/* News Label */}
       <div className="absolute left-1 flex items-center   rounded-full text-customWhite px-2 py-1">
-        <PiSpeakerHighFill className="text-textSecondaryColor" />
+        {/* <PiSpeakerHighFill className="text-textSecondaryColor" /> */}
+        <div
+          className="w-4 h-4"
+          style={{
+            WebkitMaskImage: `url(${announcementImage})`,
+            WebkitMaskRepeat: "no-repeat",
+            WebkitMaskSize: "contain",
+            backgroundColor: "#C9A33D",
+          }}
+        ></div>
       </div>
 
       {/* Marquee Container */}

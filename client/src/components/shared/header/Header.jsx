@@ -5,7 +5,8 @@ import logo3 from "../../../assets/v2/quetta-gladiators.png";
 import logo4 from "../../../assets/v2/bologna-fc-1909-n8kXOhaz.png";
 // import iconAll from "../../../assets/v2/icon-all-provider.svg";
 import partnerLogo from "../../../assets/v2/afc-bournemouth.png";
-import { IoIosMenu, IoMdHelpCircleOutline } from "react-icons/io";
+import {  IoMdHelpCircleOutline } from "react-icons/io";
+import { HiMenuAlt2 } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import { AnimatePresence, motion } from "motion/react";
@@ -59,10 +60,10 @@ const Header = ({ menuItems }) => {
 
   return (
     <div className="bg-primary-primaryColor text-white z-50">
-      <div className="flex flex-row items-center justify-around py-1">
-        <IoIosMenu
+      <div className="flex flex-row items-center justify-between px-3 py-1">
+        <HiMenuAlt2
           onClick={() => setIsOpen(!isOpen)}
-          className="text-textSecondaryColor w-5 h-5"
+          className="text-textSecondaryColor w-6 h-6"
         />
         {/* Shadow Overlay */}
         {isOpen && (
