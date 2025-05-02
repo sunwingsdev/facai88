@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [react()],
   build: {
-    chunkSizeWarningLimit: 2000,
+    chunkSizeWarningLimit: 3000,
   },
   resolve: {
     alias: {

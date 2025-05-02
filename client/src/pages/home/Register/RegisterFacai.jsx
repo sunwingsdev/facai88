@@ -11,8 +11,9 @@ import { Link, useOutletContext } from "react-router-dom";
 import { LanguageContext } from "@/Context/LanguageContext";
 import { FaChevronLeft } from "react-icons/fa";
 import RegisterModal from "./RegisterModal";
+import registerBg from "../../../assets/registerBg.png";
 
-const RegisterFacai = ({handleLoginOpen}) => {
+const RegisterFacai = ({ handleLoginOpen }) => {
   const { language } = useContext(LanguageContext);
   const [step, setStep] = useState(0); // <-- Start from Step 0
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -142,151 +143,153 @@ const RegisterFacai = ({handleLoginOpen}) => {
   return (
     <div>
       {/* largeDevice */}
-      <div className="bg-primary-primaryColor">
-      
-      <div className="py-5 hidden md:block  mx-auto lg:max-w-6xl  text-white">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-0   p-8">
-          {/* Image Section */}
-          <div className="lg:w-full lg:h-[600px]">
-            <img
-              src={signUpImage}
-              alt="Sign Up Illustration"
-              className="w-full h-full cursor-pointer"
-              onClick={() => console.log("Image clicked")}
-            />
-          </div>
+      <div
+        className="bg-primary-primaryColor"
+        style={{ backgroundImage: `url(${registerBg})` }}
+      >
+        <div className="py-5 hidden md:block  mx-auto lg:max-w-6xl  text-white">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-0   p-8">
+            {/* Image Section */}
+            <div className="lg:w-full lg:h-[600px]">
+              <img
+                src={signUpImage}
+                alt="Sign Up Illustration"
+                className="w-full h-[30rem] cursor-pointer"
+                onClick={() => console.log("Image clicked")}
+              />
+            </div>
 
-          {/* Form Section */}
-          <form
-            onSubmit={handleSubmit}
-            className="lg:w-2/3 lg:h-[800px] bg-componentBgPrimary text-sm p-10 space-y-6"
-          >
-            {/* Step 0 - Referral and Currency */}
-            {step === 0 && (
-              <div className="space-y-6 relative">
-                <h3 className="text-textSecondaryColor font-semibold text-lg">
-                  Let&apos;s Get Started
-                </h3>
-
-                <div>
-                  <h3 className="text-white mb-1">{t.referralCode}</h3>
-                  <input
-                    type="text"
-                    name="referralCode"
-                    placeholder={t.placeholderReferralCode}
-                    className="w-full p-2 bg-primary-primaryColor text-black border border-gray-400 rounded-md"
-                    value={formData.referralCode}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="relative">
-                  <h3 className="text-white mb-1">{t.currency}</h3>
-
-                  <div
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="w-full p-2 bg-primary-primaryColor text-white border border-gray-400 rounded-md flex items-center justify-between cursor-pointer"
-                  >
-                    <div className="flex items-center gap-2">
-                      <img
-                        src={
-                          options.find((opt) => opt.name === formData.currency)
-                            ?.image
-                        }
-                        alt={formData.currency}
-                        className="w-6 h-6"
-                      />
-                      {formData.currency}
-                    </div>
-                    <span className="text-white">&#9662;</span>
-                  </div>
-
-                  {dropdownOpen && (
-                    <div
-                      ref={dropdownRef}
-                      className="absolute w-full bg-black text-white rounded mt-1 shadow-md z-10"
-                    >
-                      {options.map((option, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center p-3 hover:text-textSecondaryColor bg-primary-primaryColor hover:bg-black cursor-pointer"
-                          onClick={() => handleCurrencySelect(option)}
-                        >
-                          <img
-                            src={option.image}
-                            alt={option.name}
-                            className="w-6 h-6 mr-2"
-                          />
-                          {option.name}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <button
-                  type="button"
-                  className="bg-white-to-darkblue w-full text-white px-6 py-2 rounded-md"
-                  onClick={() => setStep(1)}
-                >
-                  Sign up by Account
-                </button>
-              </div>
-            )}
-
-            {/* Step 1 - Username & Password */}
-            {step === 1 && (
-              <>
-                <div className="flex ">
-                  <button
-                    type="button"
-                    onClick={() => setStep((prev) => prev - 1)}
-                    className="  text-textSecondaryColor px-4 py-2 rounded-md"
-                  >
-                    <FaChevronLeft className="text-2xl" />
-                  </button>
-                  <h3 className="text-textSecondaryColor text-2xl flex  ">
-                    {t.title}
+            {/* Form Section */}
+            <form
+              onSubmit={handleSubmit}
+              className="lg:w-2/3 lg:h-[800px] bg-componentBgPrimary text-sm p-10 space-y-6"
+            >
+              {/* Step 0 - Referral and Currency */}
+              {step === 0 && (
+                <div className="space-y-6 relative">
+                  <h3 className="text-textSecondaryColor font-semibold text-lg">
+                    Let&apos;s Get Started
                   </h3>
-                </div>
-                <div>
-                  <h3>{t.username}</h3>
-                  <input
-                    type="text"
-                    name="username"
-                    placeholder={t.placeholderUsername}
-                    className="w-full p-2 text-black bg-primary-primaryColor border border-gray-400 rounded-md"
-                    value={formData.username}
-                    onChange={handleChange}
-                  />
-                </div>
 
-                <div className="  flex flex-col">
-                  <h3>{t.password}</h3>
-                  <div className="relative">
+                  <div>
+                    <h3 className="text-white mb-1">{t.referralCode}</h3>
                     <input
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      placeholder={t.placeholderPassword}
-                      className="w-full p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
-                      value={formData.password}
+                      type="text"
+                      name="referralCode"
+                      placeholder={t.placeholderReferralCode}
+                      className="w-full p-2 bg-primary-primaryColor text-black border border-gray-400 rounded-md"
+                      value={formData.referralCode}
                       onChange={handleChange}
                     />
+                  </div>
+
+                  <div className="relative">
+                    <h3 className="text-white mb-1">{t.currency}</h3>
+
                     <div
-                      className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
-                      onClick={() => setShowPassword(!showPassword)}
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      className="w-full p-2 bg-primary-primaryColor text-white border border-gray-400 rounded-md flex items-center justify-between cursor-pointer"
                     >
-                      {showPassword ? (
-                        
-                        <FaEye className="text-textPrimary " />
-                      ) : (
-                        <FaEyeSlash className="text-textPrimary " />
-                      )}
+                      <div className="flex items-center gap-2">
+                        <img
+                          src={
+                            options.find(
+                              (opt) => opt.name === formData.currency
+                            )?.image
+                          }
+                          alt={formData.currency}
+                          className="w-6 h-6"
+                        />
+                        {formData.currency}
+                      </div>
+                      <span className="text-white">&#9662;</span>
+                    </div>
+
+                    {dropdownOpen && (
+                      <div
+                        ref={dropdownRef}
+                        className="absolute w-full bg-black text-white rounded mt-1 shadow-md z-10"
+                      >
+                        {options.map((option, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center p-3 hover:text-textSecondaryColor bg-primary-primaryColor hover:bg-black cursor-pointer"
+                            onClick={() => handleCurrencySelect(option)}
+                          >
+                            <img
+                              src={option.image}
+                              alt={option.name}
+                              className="w-6 h-6 mr-2"
+                            />
+                            {option.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    className="bg-white-to-darkblue w-full text-white px-6 py-2 rounded-md"
+                    onClick={() => setStep(1)}
+                  >
+                    Sign up by Account
+                  </button>
+                </div>
+              )}
+
+              {/* Step 1 - Username & Password */}
+              {step === 1 && (
+                <>
+                  <div className="flex ">
+                    <button
+                      type="button"
+                      onClick={() => setStep((prev) => prev - 1)}
+                      className="  text-textSecondaryColor px-4 py-2 rounded-md"
+                    >
+                      <FaChevronLeft className="text-2xl" />
+                    </button>
+                    <h3 className="text-textSecondaryColor text-2xl flex  ">
+                      {t.title}
+                    </h3>
+                  </div>
+                  <div>
+                    <h3>{t.username}</h3>
+                    <input
+                      type="text"
+                      name="username"
+                      placeholder={t.placeholderUsername}
+                      className="w-full p-2 text-black bg-primary-primaryColor border border-gray-400 rounded-md"
+                      value={formData.username}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="  flex flex-col">
+                    <h3>{t.password}</h3>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder={t.placeholderPassword}
+                        className="w-full p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
+                        value={formData.password}
+                        onChange={handleChange}
+                      />
+                      <div
+                        className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <FaEye className="text-textPrimary " />
+                        ) : (
+                          <FaEyeSlash className="text-textPrimary " />
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* <div>
+                  {/* <div>
                   <h3 className="text-white mb-1">{t.referralCode}</h3>
                   <input
                     type="text"
@@ -297,83 +300,83 @@ const RegisterFacai = ({handleLoginOpen}) => {
                     onChange={handleChange}
                   />
                 </div> */}
-              </>
-            )}
+                </>
+              )}
 
-            {/* Step 2 - Phone, Email, Verification, Terms */}
-            {step === 2 && (
-              <>
-                <div className="flex ">
-                  <button
-                    type="button"
-                    onClick={() => setStep((prev) => prev - 1)}
-                    className="  text-textSecondaryColor px-4 py-2 rounded-md"
-                  >
-                    <FaChevronLeft className="text-2xl" />
-                  </button>
-                  <h3 className="text-textSecondaryColor text-2xl flex  ">
-                    {t.title}
-                  </h3>
-                </div>
+              {/* Step 2 - Phone, Email, Verification, Terms */}
+              {step === 2 && (
+                <>
+                  <div className="flex ">
+                    <button
+                      type="button"
+                      onClick={() => setStep((prev) => prev - 1)}
+                      className="  text-textSecondaryColor px-4 py-2 rounded-md"
+                    >
+                      <FaChevronLeft className="text-2xl" />
+                    </button>
+                    <h3 className="text-textSecondaryColor text-2xl flex  ">
+                      {t.title}
+                    </h3>
+                  </div>
 
-                <div className="mb-4 relative">
-                  <h3 className="mb-1">{t.phoneNumber}</h3>
-                  <div className="flex gap-2">
-                    <div className="relative w-1/3">
-                      <div
-                        onClick={() => setCodeDropdownOpen(!codeDropdownOpen)}
-                        className="p-2 bg-primary-primaryColor text-white border border-gray-400 rounded-md flex items-center justify-between cursor-pointer"
-                      >
-                        <div className="flex items-center gap-2">
-                          <img
-                            src={
-                              countryCodes.find(
-                                (opt) => opt.code === formData.countryCode
-                              )?.flag
-                            }
-                            alt={formData.countryCode}
-                            className="w-4 h-4"
-                          />
-                          {formData.countryCode}
+                  <div className="mb-4 relative">
+                    <h3 className="mb-1">{t.phoneNumber}</h3>
+                    <div className="flex gap-2">
+                      <div className="relative w-1/3">
+                        <div
+                          onClick={() => setCodeDropdownOpen(!codeDropdownOpen)}
+                          className="p-2 bg-primary-primaryColor text-white border border-gray-400 rounded-md flex items-center justify-between cursor-pointer"
+                        >
+                          <div className="flex items-center gap-2">
+                            <img
+                              src={
+                                countryCodes.find(
+                                  (opt) => opt.code === formData.countryCode
+                                )?.flag
+                              }
+                              alt={formData.countryCode}
+                              className="w-4 h-4"
+                            />
+                            {formData.countryCode}
+                          </div>
+                          <span className="text-white">&#9662;</span>
                         </div>
-                        <span className="text-white">&#9662;</span>
+
+                        {codeDropdownOpen && (
+                          <div
+                            ref={codeDropdownRef}
+                            className="absolute w-full bg-black text-white rounded mt-1 shadow-md z-10"
+                          >
+                            {countryCodes.map((option, idx) => (
+                              <div
+                                key={idx}
+                                className="flex items-center p-3 hover:text-textSecondaryColor bg-primary-primaryColor  hover:bg-black cursor-pointer"
+                                onClick={() => handleCodeSelect(option)}
+                              >
+                                <img
+                                  src={option.flag}
+                                  alt={option.code}
+                                  className="w-6 h-6 mr-2"
+                                />
+                                {option.code}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
-                      {codeDropdownOpen && (
-                        <div
-                          ref={codeDropdownRef}
-                          className="absolute w-full bg-black text-white rounded mt-1 shadow-md z-10"
-                        >
-                          {countryCodes.map((option, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-center p-3 hover:text-textSecondaryColor bg-primary-primaryColor  hover:bg-black cursor-pointer"
-                              onClick={() => handleCodeSelect(option)}
-                            >
-                              <img
-                                src={option.flag}
-                                alt={option.code}
-                                className="w-6 h-6 mr-2"
-                              />
-                              {option.code}
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder={t.placeholder}
+                        className="w-full p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
                     </div>
-
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder={t.placeholder}
-                      className="w-full p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    />
                   </div>
-                </div>
 
-                {/* <div>
+                  {/* <div>
                 <h3>{t.email}</h3>
                 <input
                   type="email"
@@ -385,30 +388,30 @@ const RegisterFacai = ({handleLoginOpen}) => {
                 />
               </div> */}
 
-                <div>
-                  <h3>{t.verificationCode}</h3>
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      name="verificationCode"
-                      placeholder={t.placeholderVerificationCode}
-                      className="w-2/3 p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
-                      value={formData.verificationCode}
-                      onChange={handleChange}
-                    />
-                    <div className="px-4 flex items-center gap-2 rounded-md bg-black">
-                      <div className="text-white text-lg">7832</div>
-                      <button
-                        type="button"
-                        onClick={() => alert("Code reloaded!")}
-                      >
-                        <TbReload className="text-2xl text-white" />
-                      </button>
+                  <div>
+                    <h3>{t.verificationCode}</h3>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        name="verificationCode"
+                        placeholder={t.placeholderVerificationCode}
+                        className="w-2/3 p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
+                        value={formData.verificationCode}
+                        onChange={handleChange}
+                      />
+                      <div className="px-4 flex items-center gap-2 rounded-md bg-black">
+                        <div className="text-white text-lg">7832</div>
+                        <button
+                          type="button"
+                          onClick={() => alert("Code reloaded!")}
+                        >
+                          <TbReload className="text-2xl text-white" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* <div className="flex items-center space-x-2 text-sm">
+                  {/* <div className="flex items-center space-x-2 text-sm">
                 <input
                   type="checkbox"
                   name="agreed"
@@ -427,12 +430,12 @@ const RegisterFacai = ({handleLoginOpen}) => {
                   </Link>
                 </label>
               </div> */}
-              </>
-            )}
+                </>
+              )}
 
-            {/* Footer Buttons */}
-            <div className="flex justify-between gap-6 text-sm items-center">
-              {/* {step > 0 && (
+              {/* Footer Buttons */}
+              <div className="flex justify-between gap-6 text-sm items-center">
+                {/* {step > 0 && (
               <button
                 type="button"
                 onClick={() => setStep((prev) => prev - 1)}
@@ -441,42 +444,36 @@ const RegisterFacai = ({handleLoginOpen}) => {
                 {t.back}
               </button>
             )} */}
-              <div className="w-full">
-                {(step === 1 || step === 2) && (
-                  <button
-                    type="submit"
-                    className="bg-primary-primaryColorTwo w-full text-white px-6 py-2 rounded-md ml-auto"
-                  >
-                    {step === 2 ? t.finalSubmit : t.submit}
-                  </button>
-                )}
-
-                {step === 0 && (
-                  <div className="text-white py-2 flex flex-col lg:flex-row items-center gap-2">
-                    <p>
-                      {language === "en"
-                        ? "Already have an account?"
-                        : "ইতিমধ্যে একটি সদস্যপদ আছে?"}
-                    </p>
-                    <Link to="/login">
-                    <p
-                      className="text-textSecondaryColor cursor-pointer underline"
-                      
+                <div className="w-full">
+                  {(step === 1 || step === 2) && (
+                    <button
+                      type="submit"
+                      className="bg-primary-primaryColorTwo w-full text-white px-6 py-2 rounded-md ml-auto"
                     >
-                      {language === "en" ? "Log in" : "প্রবেশ করুন"}
-                    </p>
-                    </Link>
-                  </div>
-                )}
+                      {step === 2 ? t.finalSubmit : t.submit}
+                    </button>
+                  )}
+
+                  {step === 0 && (
+                    <div className="text-white py-2 flex flex-col lg:flex-row items-center gap-2">
+                      <p>
+                        {language === "en"
+                          ? "Already have an account?"
+                          : "ইতিমধ্যে একটি সদস্যপদ আছে?"}
+                      </p>
+                      <Link to="/login">
+                        <p className="text-textSecondaryColor cursor-pointer underline">
+                          {language === "en" ? "Log in" : "প্রবেশ করুন"}
+                        </p>
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-        
-      </div>
-
-
 
       {/* phoneDevice */}
       <div className="pb-14 md:hidden   mx-auto lg:max-w-6xl bg-primary-primaryColorTwo text-white">
@@ -574,7 +571,6 @@ const RegisterFacai = ({handleLoginOpen}) => {
                   {showPassword ? (
                     <FaEye className="text-textPrimary " />
                   ) : (
-                    
                     <FaEyeSlash className="text-textPrimary " />
                   )}
                 </div>
