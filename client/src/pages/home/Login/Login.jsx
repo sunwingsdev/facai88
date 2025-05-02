@@ -52,7 +52,6 @@ const Login = () => {
           navigate("/dashboard");
         }
       }
-      // eslint-disable-next-line no-unused-vars
     } catch (error) {
       addToast("Provide valid username and password", {
         appearance: "error",
