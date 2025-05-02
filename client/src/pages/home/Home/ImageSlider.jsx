@@ -37,7 +37,7 @@ const ImageSlider = () => {
       {/* **Slider Container** */}
       <div className="relative mt-8 w-[100%] md:w-[50%] lg:w-[40%]">
         <div
-          className="flex gap-2  transition-transform duration-500 ease-in-out w-[80%] md:w-[110%] lg:w-[110%] md:h-[250px] lg:h-[300px]"
+          className="flex gap-2  transition-transform duration-500 ease-in-out w-[80%] md:w-[110%] lg:w-[110%]  md:h-[250px] lg:h-[300px]"
           style={{
             transform: `translateX(calc(-${currentIndex * 100}% + ${
               window.innerWidth >= 768 && window.innerWidth < 1024 ? "" : "10px"
@@ -58,7 +58,7 @@ const ImageSlider = () => {
                   <img
                     src={`${import.meta.env.VITE_BASE_API_URL}${item?.image}`}
                     alt={`${item.category} Image`}
-                    className="mx-auto rounded-lg"
+                    className="mx-auto h-[102px] rounded-sm"
                   />
                 </div>
               </div>
