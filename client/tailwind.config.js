@@ -65,8 +65,11 @@ export default {
         
       },
       backgroundImage: {
-        'white-to-darkblue': 'linear-gradient(to right, rgba(255, 255, 255, 0.3), #243254)',
+        'white-to-darkblue': 'linear-gradient(to right, #2a3254 0%, #445187 15%, #445187 30%, #2a3254 55%, #2a3254 100%)',
         'white-to-gold': 'linear-gradient(to right, rgba(255,255,255,0.2), #C9A33Dcc)',
+        // 'gold-gradient': 'linear-gradient(to right, #d4b665, #a46c0d 50%)',
+        'gold-gradient': 'linear-gradient(to right, #d4b665, #a46c0d 50%, #C9A33D)',
+
       },
     },
   },
