@@ -90,6 +90,8 @@ import AboutUs from "@/pages/extra/AboutUs";
 import Security from "@/pages/extra/Security";
 import PrivacyPolicyInfo from "@/pages/extra/PrivacyPolicyInfo";
 import FaqInfo from "@/pages/extra/FaqInfo";
+import DepositPhone from "@/pages/DepositPhone";
+import AffiliateFacaiLayout from "@/layouts/AffiliateFacaiLayout";
 
 const router = createBrowserRouter([
   {
@@ -150,7 +152,10 @@ const router = createBrowserRouter([
       // { path: "/info", element: <SiteInfo /> },
     ],
   },
-
+  {
+    path: "/deposit-now",
+    element: <DepositPhone />,
+  },
   {
     path: "/dashboard",
     element: (
@@ -276,30 +281,42 @@ const router = createBrowserRouter([
     ],
   },
 
+  // {
+  //   path: "/affiliate",
+  //   element: <BecomeAnAffiliate />,
+  //   children: [
+  //     {
+  //       path: "",
+  //       element: <HomeAffiliate />,
+  //     },
+  //     {
+  //       path: "termsandconditions",
+  //       element: <TermsAndConditions />,
+  //     },
+  //     {
+  //       path: "privacypolicy",
+  //       element: <PrivacyPolicy />,
+  //     },
+  //     {
+  //       path: "disconnection",
+  //       element: <Disconnection />,
+  //     },
+  //     {
+  //       path: "faqs",
+  //       element: <Faqs />,
+  //     },
+  //   ],
+  // },
   {
     path: "/affiliate",
-    element: <BecomeAnAffiliate />,
+    element: <AffiliateFacaiLayout />,
     children: [
-      {
-        path: "",
-        element: <HomeAffiliate />,
-      },
-      {
-        path: "termsandconditions",
-        element: <TermsAndConditions />,
-      },
-      {
-        path: "privacypolicy",
-        element: <PrivacyPolicy />,
-      },
-      {
-        path: "disconnection",
-        element: <Disconnection />,
-      },
-      {
-        path: "faqs",
-        element: <Faqs />,
-      },
+      // {
+      //   path: "",
+      //   element: <HomeAffiliate />,
+      // },
+      
+      
     ],
   },
 

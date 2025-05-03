@@ -19,9 +19,9 @@ export function CardSlider({ cards }) {
   return (
     <div className="rounded-lg">
       <div className="bg-bottomNavBgColor text-white p-3 flex justify-between items-center rounded-t-lg">
-        <h2>প্রিয়</h2>
+        <h2 className="hidden md:block">প্রিয়</h2>
         {/* Functional custom buttons for carousel control */}
-        <div className="hidden md:flex space-x-4 text-yellow-500">
+        <div className="flex space-x-4 text-yellow-500">
           <button onClick={() => previousRef.current?.click()}>
             <LiaLongArrowAltLeftSolid className="text-2xl" />
           </button>
@@ -37,7 +37,7 @@ export function CardSlider({ cards }) {
               <div className="w-full">
                 {/* Ensure the image takes the full width and scales correctly */}
                 <img
-                  className="w-full h-full object-cover"
+                  className="w-full min-w-[80px] h-full object-cover"
                   src={card.image}
                   alt=""
                 />
