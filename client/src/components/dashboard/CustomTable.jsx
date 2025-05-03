@@ -45,7 +45,7 @@ const CustomTable = ({ title, headers, data, borderColor }) => {
           onClick={() => handleClick(page)}
           className={`px-3 py-1 rounded-md border ${
             page === currentPage
-              ? "bg-blue-600 text-white"
+              ? "bg-backgroundSecondaryColor text-white"
               : "bg-white text-gray-700"
           }`}
         >
@@ -57,7 +57,7 @@ const CustomTable = ({ title, headers, data, borderColor }) => {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-[#397ef1] via-[#2463ec] to-[#2044b4] p-2 mb-4 mt-16 rounded-sm shadow-md">
+      <div className="bg-backgroundSecondaryColor p-2 mb-4 mt-16 rounded-sm shadow-md">
         <h1 className="text-2xl text-white font-semibold text-center">
           {title}
         </h1>
@@ -65,7 +65,7 @@ const CustomTable = ({ title, headers, data, borderColor }) => {
       <div className="bg-white rounded-sm shadow-md">
         <div className="overflow-x-auto">
           <table className="table-auto w-full border-collapse">
-            <thead className="bg-[#2563ea]">
+            <thead className="bg-primary-primaryColorTwo">
               <tr>
                 {headers.map((header, index) => (
                   <th

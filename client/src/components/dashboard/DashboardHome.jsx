@@ -7,7 +7,20 @@ import {
   FaLock,
   FaUser,
   FaUsers,
+  FaPuzzlePiece,
+  FaUniversity,
+  FaCreditCard,
 } from "react-icons/fa";
+import { TiGroup } from "react-icons/ti";
+import { FiUsers } from "react-icons/fi";
+import { MdBatteryAlert, MdRequestPage } from "react-icons/md";
+import { BiDownload, BiMoneyWithdraw, BiSolidGame } from "react-icons/bi";
+import { FaMoneyBillWave } from "react-icons/fa6";
+import { RiWallet3Fill, RiBankCardLine } from "react-icons/ri";
+import { GiJoystick } from "react-icons/gi";
+import { TbApi } from "react-icons/tb";
+import { PiHandWithdrawBold } from "react-icons/pi";
+import { HiOutlineBanknotes } from "react-icons/hi2";
 import StatsCard from "./StatsCard";
 import CustomTable from "./CustomTable";
 
@@ -23,6 +36,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252b5",
       status: "completed",
       createdAt: "2025-03-18T22:38:27.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252b5",
         username: "misu97",
@@ -45,6 +60,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252b6",
       status: "pending",
       createdAt: "2025-03-19T10:15:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252b6",
         username: "tonmoy88",
@@ -67,6 +84,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252b7",
       status: "completed",
       createdAt: "2025-03-20T14:45:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252b7",
         username: "sabbir01",
@@ -89,6 +108,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252b8",
       status: "pending",
       createdAt: "2025-03-21T08:20:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252b8",
         username: "subroto22",
@@ -111,6 +132,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252b9",
       status: "completed",
       createdAt: "2025-03-22T17:30:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252b9",
         username: "vismo99",
@@ -133,6 +156,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252c0",
       status: "pending",
       createdAt: "2025-03-23T12:10:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252c0",
         username: "mou",
@@ -155,6 +180,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252c1",
       status: "completed",
       createdAt: "2025-03-24T20:00:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252c1",
         username: "arif02",
@@ -177,6 +204,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252c2",
       status: "completed",
       createdAt: "2025-03-25T11:45:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252c2",
         username: "nahid66",
@@ -199,6 +228,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252c3",
       status: "pending",
       createdAt: "2025-03-26T13:30:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Referral Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252c3",
         username: "sohel09",
@@ -221,6 +252,8 @@ const DashboardHome = () => {
       userId: "67d9b199032d9870453252c4",
       status: "completed",
       createdAt: "2025-03-27T16:20:00.947Z",
+      promotion: "Spring Sale",
+      reason: "Birthday Bonus",
       userInfo: {
         _id: "67d9b199032d9870453252c4",
         username: "shipan97",
@@ -241,57 +274,176 @@ const DashboardHome = () => {
   // const
   const stats = [
     {
-      title: "Total Users",
+      title: "Total Active Players",
       count: users?.length,
       Icon: FaUser,
-      bgColor: "bg-[#3c8dbc]",
+      bgColor: "bg-primary-primaryColorTwo",
     },
     {
-      title: "New Users This Month",
+      title: "Total Deactive Players",
       count: 0,
       Icon: FaUsers,
-      bgColor: "bg-[#00a65a]",
-    },
-    { title: "Banned Users", count: 0, Icon: FaLock, bgColor: "bg-[#f39c12]" },
-    { title: "Games", count: 0, Icon: FaGamepad, bgColor: "bg-[#dd4b39]" },
-    {
-      title: "Credit Agents",
-      count: 0,
-      Icon: BsDiagram3Fill,
-      bgColor: "bg-[#3c8dbc]",
+      bgColor: "bg-primary-primaryColorTwo",
     },
     {
-      title: "Credit Operators",
+      title: "Total Affiliates",
       count: 0,
-      Icon: FaChartArea,
-      bgColor: "bg-[#00a65a]",
+      Icon: TiGroup,
+      bgColor: "bg-primary-primaryColorTwo",
     },
     {
-      title: "Credit Shops",
+      title: "Total Cash Agents",
       count: 0,
-      Icon: FaChartArea,
-      bgColor: "bg-[#f39c12]",
+      Icon: FiUsers,
+      bgColor: "bg-primary-primaryColorTwo",
     },
     {
-      title: "Total Money 0.00%",
+      title: "Agent Low Balance",
       count: 0,
-      Icon: FaChartArea,
-      bgColor: "bg-[#dd4b39]",
+      Icon: MdBatteryAlert,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total Deposits",
+      count: 0,
+      Icon: BiDownload,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total A-Pay Deposits",
+      count: 0,
+      Icon: FaMoneyBillWave,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total C-Pay Deposits",
+      count: 0,
+      Icon: RiWallet3Fill,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total Withdrawals",
+      count: 0,
+      Icon: RiBankCardLine,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Today Withdrawals",
+      count: 0,
+      Icon: BiMoneyWithdraw,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total Game Categories",
+      count: 0,
+      Icon: FaPuzzlePiece,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total Games",
+      count: 0,
+      Icon: GiJoystick,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total Gameimg API",
+      count: 0,
+      Icon: TbApi,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total Active Games",
+      count: 0,
+      Icon: FaGamepad,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Total Deactive Games",
+      count: 0,
+      Icon: BiSolidGame,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Player Deposit Requests",
+      count: 0,
+      Icon: FaUniversity,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Player Withdrawal Requests",
+      count: 0,
+      Icon: PiHandWithdrawBold,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Agent Top-Up Requests",
+      count: 0,
+      Icon: MdRequestPage,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Affiliate Withdrawal Requests",
+      count: 0,
+      Icon: HiOutlineBanknotes,
+      bgColor: "bg-primary-primaryColorTwo",
+    },
+    {
+      title: "Active Deposit Methods",
+      count: 0,
+      Icon: FaCreditCard,
+      bgColor: "bg-primary-primaryColorTwo",
     },
   ];
 
-  const userPaymentsHeaders = ["Username", "Phone", "Amount", "Date"];
+  const lastDepositHeaders = [
+    "Player Name",
+    "Deposit Method",
+    "Deposit Channel",
+    "Amount",
+    "Sender Info",
+    "Date & Time",
+    "Promotion",
+    "Reason",
+    "Status",
+  ];
+  const lastWithdrawHeaders = [
+    "Player Name",
+    "Withdraw Method",
+    "Withdraw Channel",
+    "Amount",
+    "Sender Info",
+    "Date & Time",
+    "Promotion",
+    "Reason",
+    "Status",
+  ];
 
   const sortedDeposits =
     deposits
       ?.slice()
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) || [];
 
-  const userPaymentsData = sortedDeposits.map((deposit) => ({
+  const lastDepositsData = sortedDeposits.map((deposit) => ({
     username: deposit?.userInfo?.username,
-    phone: deposit?.userInfo?.phone,
+    paymentMethod: deposit?.paymentMethod,
+    depositChannel: deposit?.depositChannel,
     amount: deposit?.amount,
+    phone: deposit?.userInfo?.phone,
     createdAt: new Date(deposit.createdAt).toLocaleString(),
+    promotion: deposit?.promotion,
+    reason: deposit?.reason,
+    status: deposit?.status,
+  }));
+  const lastWithdrawsData = sortedDeposits.map((withdraw) => ({
+    username: withdraw?.userInfo?.username,
+    paymentMethod: withdraw?.paymentMethod,
+    depositChannel: withdraw?.depositChannel,
+    amount: withdraw?.amount,
+    phone: withdraw?.userInfo?.phone,
+    createdAt: new Date(withdraw.createdAt).toLocaleString(),
+    promotion: withdraw?.promotion,
+    reason: withdraw?.reason,
+    status: withdraw?.status,
   }));
 
   const userGamesHeaders = ["Game", "User", "Balance", "Bet", "Win", "Date"];
@@ -378,18 +530,18 @@ const DashboardHome = () => {
       </div>
 
       <CustomTable
-        title="User Payments"
-        headers={userPaymentsHeaders}
-        data={userPaymentsData}
+        title="Today's last Deposit Requests"
+        headers={lastDepositHeaders}
+        data={lastDepositsData}
         borderColor="#30b779"
       />
       <CustomTable
-        title="User Games"
-        headers={userGamesHeaders}
-        data={userGamesData}
+        title="Today's last Withdraw Requests"
+        headers={lastWithdrawHeaders}
+        data={lastWithdrawsData}
         borderColor="#f39c12"
       />
-      <CustomTable
+      {/* <CustomTable
         title="Latest Shops"
         headers={latestShopsHeaders}
         data={latestShopsData}
@@ -400,7 +552,7 @@ const DashboardHome = () => {
         headers={latestShiftStatsHeader}
         data={latestShiftStatsData}
         borderColor="#f39c12"
-      />
+      /> */}
     </div>
   );
 };

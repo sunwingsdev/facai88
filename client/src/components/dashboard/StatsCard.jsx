@@ -4,9 +4,9 @@ const StatsCard = ({ title, count, Icon, bgColor }) => (
   >
     <div>
       <p className="text-2xl font-bold">{count}</p>
-      <h3 className="text-sm">{title}</h3>
+      <h3 className="text-lg text-textSecondaryColor">{title}</h3>
     </div>
-    {Icon && <Icon className="text-6xl text-black opacity-15" />}{" "}
+    {Icon && <Icon className="text-6xl text-white opacity-15" />}{" "}
     {/* Render the icon dynamically */}
   </div>
 );
