@@ -3,9 +3,13 @@ import logo1 from "../../../assets/v2/deccan-gladiators-ChfQU95Q.png";
 import logo2 from "../../../assets/v2/sunrisers-eastern-cape-4BShiuSM.png";
 import logo3 from "../../../assets/v2/quetta-gladiators.png";
 import logo4 from "../../../assets/v2/bologna-fc-1909-n8kXOhaz.png";
+import promoIcon from "../../../assets/v2/icon-promotion.png";
+import vipIcon from "../../../assets/v2/icon-vip.png";
+import affiliateIcon from "../../../assets/v2/icon-affiliate.png";
+import partnerIcon from "../../../assets/v2/icon-partnerships.png";
 // import iconAll from "../../../assets/v2/icon-all-provider.svg";
 import partnerLogo from "../../../assets/v2/afc-bournemouth.png";
-import {  IoMdHelpCircleOutline } from "react-icons/io";
+import { IoMdHelpCircleOutline } from "react-icons/io";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
@@ -18,6 +22,37 @@ const Header = ({ menuItems }) => {
   const { data: homeControls } = useGetHomeControlsQuery();
   const { data: allHomeGames } = useGetAllHomeGamesQuery();
   const images = [logo1, logo2, logo3, logo4];
+
+  const navItems = [
+    {
+      name: "প্রমোশনস",
+      image: promoIcon,
+      isLocal: true,
+      route: "/promotional-offer",
+    },
+    {
+      name: "ভিআইপি",
+      image: vipIcon,
+      isLocal: true,
+      route: "/vip",
+    },
+  ];
+  const navItems2 = [
+    {
+      name: "এফিলিয়েট",
+      image: affiliateIcon,
+      isLocal: true,
+      route: "/affiliate",
+    },
+    {
+      name: "পার্টনারশিপ",
+      image: partnerIcon,
+      isLocal: true,
+      route: "/partnership",
+    },
+  ];
+
+  const combinedMenuItems = [...(menuItems || []), ...navItems];
 
   const [index, setIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -97,7 +132,7 @@ const Header = ({ menuItems }) => {
             <ul className="flex flex-col gap-y-2">
               {menuItems?.map((item, index) => (
                 <div key={index} className="">
-                  <Link onClick={() => handleClick(index)}>
+                  <Link to={item.route} onClick={() => handleClick(index)}>
                     <li
                       className={`flex items-center border-b border-white ${
                         openIndex === index ? "bg-componentBgSecondary" : ""
@@ -109,7 +144,7 @@ const Header = ({ menuItems }) => {
                     >
                       <img
                         src={`${import.meta.env.VITE_BASE_API_URL}${
-                          item?.image
+                          item.image
                         }`}
                         alt={item.name}
                         className="w-6 h-auto"
@@ -127,6 +162,75 @@ const Header = ({ menuItems }) => {
               ))}
             </ul>
           )}
+          <div className="bg-primary-primaryColor py-1.5">
+            {navItems?.length > 0 && (
+              <ul className="flex flex-col gap-y-2 my-2 bg-componentBgSecondary">
+                {navItems?.map((item, index) => (
+                  <div key={index} className="">
+                    <Link to={item.route} onClick={() => handleClick(index)}>
+                      <li
+                        className={`flex items-center border-b border-white ${
+                          openIndex === index ? "bg-componentBgSecondary" : ""
+                        } ${
+                          [13, 14, 15, 16].includes(index)
+                            ? "border w-36 mx-auto text-left text-white space-x-1 font-bold"
+                            : ""
+                        } border-opacity-50 pl-2 py-2 space-x-2 text-center cursor-pointer`}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-6 h-auto"
+                        />
+                        <span
+                          className={`text-xs ${
+                            [13, 14, 15, 16].includes(index) ? "text-left" : ""
+                          } font-medium`}
+                        >
+                          {item.name}
+                        </span>
+                      </li>
+                    </Link>
+                  </div>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div className="px-3 py-1.5">
+            {navItems2?.length > 0 && (
+              <ul className="flex flex-col gap-2 pt-2">
+                {navItems2?.map((item, index) => (
+                  <div key={index} className="">
+                    <Link to={item.route} onClick={() => handleClick(index)}>
+                      <li
+                        className={`flex items-center bg-componentBgSecondary ${
+                          openIndex === index ? "bg-componentBgSecondary" : ""
+                        } ${
+                          [13, 14, 15, 16].includes(index)
+                            ? "border w-36 mx-auto text-left text-white space-x-1 font-bold"
+                            : ""
+                        } border-opacity-50 pl-2 py-2 space-x-2 text-center cursor-pointer`}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-6 h-auto"
+                        />
+                        <span
+                          className={`text-xs ${
+                            [13, 14, 15, 16].includes(index) ? "text-left" : ""
+                          } font-medium`}
+                        >
+                          {item.name}
+                        </span>
+                      </li>
+                    </Link>
+                  </div>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
 
         {/* Image-container */}
@@ -141,7 +245,7 @@ const Header = ({ menuItems }) => {
               className="fixed h-screen z-50 overflow-y-auto left-[50%] top-0 flex flex-col items-center space-y-2 bg-componentBgSecondary p-2 shadow-lg"
             >
               {/* যদি এক্সক্লুসিভ ক্যাটেগরি হয়, তাহলে allHomeGames থেকে ফিল্টার করে দেখাবে */}
-              {menuItems[openIndex]?.name === "এক্সক্লুসিভ"
+              {combinedMenuItems[openIndex]?.name === "এক্সক্লুসিভ"
                 ? allHomeGames
                     ?.filter((game) => game.category === "এক্সক্লুসিভ")
                     .map((game, index) => (
@@ -157,7 +261,7 @@ const Header = ({ menuItems }) => {
                         </div>
                       </Link>
                     ))
-                : menuItems[openIndex].subCategories?.map(
+                : combinedMenuItems[openIndex].subCategories?.map(
                     (subCategory, index) => (
                       <Link
                         to={`/category/${subCategory.category}`}
@@ -220,10 +324,9 @@ const Header = ({ menuItems }) => {
         </div> */}
         <div className="flex flex-row  gap-1 text-textSecondaryColor">
           <div className="flex flex-col items-center">
-          <MdOutlineChat className="" />
+            <MdOutlineChat className="" />
             <p className="text-xs">Live Chat</p>
           </div>
-          
         </div>
       </div>
     </div>
