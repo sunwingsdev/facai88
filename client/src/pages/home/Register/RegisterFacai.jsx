@@ -7,16 +7,45 @@ import LkImage from "../../../assets/v2/LK.png";
 import mainLogo from "../../../assets/v2/loaderLogo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { LanguageContext } from "@/Context/LanguageContext";
 import { FaChevronLeft } from "react-icons/fa";
 import RegisterModal from "./RegisterModal";
 import registerBg from "../../../assets/registerBg.png";
+import { useToasts } from "react-toast-notifications";
+import {
+  useAddUserMutation,
+  useLazyGetAuthenticatedUserQuery,
+  useLoginUserMutation,
+} from "@/redux/features/allApis/usersApi/usersApi";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "@/redux/slices/authSlice";
+import SpinLoader from "@/components/shared/loaders/Spinloader";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
-const RegisterFacai = ({ handleLoginOpen }) => {
+const generateCode = () => {
+  return Math.floor(1000 + Math.random() * 9000).toString();
+};
+
+const RegisterFacai = ({ handleLoginOpen, setIsModalOpen }) => {
+  const [addUser] = useAddUserMutation();
+  const [loginUser] = useLoginUserMutation();
+  const [getUser] = useLazyGetAuthenticatedUserQuery();
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  const { addToast } = useToasts();
   const { language } = useContext(LanguageContext);
   const [step, setStep] = useState(0); // <-- Start from Step 0
+  const [loading, setLoading] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [generatedCode, setGeneratedCode] = useState(generateCode());
+
+  const { data: homeControls } = useGetHomeControlsQuery();
+  const logoHomeControl = homeControls?.find(
+    (control) => control.category === "logo" && control.isSelected === true
+  );
+
   const dropdownRef = useRef(null);
   const [codeDropdownOpen, setCodeDropdownOpen] = useState(false);
   const codeDropdownRef = useRef(null);
@@ -31,7 +60,7 @@ const RegisterFacai = ({ handleLoginOpen }) => {
     currency: "BDT",
     countryCode: "+880",
     verificationCode: "",
-    agreed: false,
+    agreed: true,
   });
   const countryCodes = [
     { code: "+880", country: "BD", flag: bdImage },
@@ -114,29 +143,84 @@ const RegisterFacai = ({ handleLoginOpen }) => {
     }));
   };
 
-  const handleCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: checked,
-    }));
+  // const handleCheckboxChange = (e) => {
+  //   const { name, checked } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: checked,
+  //   }));
+  // };
+
+  const handleReloadCode = () => {
+    setGeneratedCode(generateCode());
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (step === 1) {
       setStep(2);
-    } else if (step === 2) {
-      if (formData.password !== formData.confirmPassword) {
-        alert("Passwords do not match");
-        return;
+      return;
+    }
+
+    // Step 2 submission
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    if (!formData.agreed) {
+      alert("You must agree to the Terms & Conditions");
+      return;
+    }
+
+    if (formData.verificationCode !== generatedCode) {
+      addToast("Verification code does not match.", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      return;
+    }
+
+    const { confirmPassword, verificationCode, ...userInfo } = formData;
+
+    try {
+      setLoading(true);
+
+      const result = await addUser(userInfo);
+      console.log("result", result);
+      if (result.data.insertedId) {
+        try {
+          const { data: loginData } = await loginUser({
+            username: formData.username,
+            password: formData.password,
+          });
+
+          if (loginData.token) {
+            const { data: userData } = await getUser(loginData.token);
+            dispatch(
+              setCredentials({ token: loginData.token, user: userData })
+            );
+          }
+        } catch (err) {
+          console.error("Login failed:", err);
+        }
+
+        addToast("Registration successful", {
+          appearance: "success",
+          autoDismiss: true,
+        });
+        setIsModalOpen(false);
+        setLoading(false);
+        navigate("/");
       }
-      if (!formData.agreed) {
-        alert("You must agree to the Terms & Conditions");
-        return;
-      }
-      console.log("Final Form Data:", formData);
-      alert("Registration Completed!");
+    } catch (error) {
+      console.error(error.message);
+      addToast(error.message, {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      setLoading(false);
     }
   };
 
@@ -177,7 +261,7 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                       type="text"
                       name="referralCode"
                       placeholder={t.placeholderReferralCode}
-                      className="w-full p-2 bg-primary-primaryColor text-black border border-gray-400 rounded-md"
+                      className="w-full p-2 bg-primary-primaryColor text-white border border-gray-400 rounded-md"
                       value={formData.referralCode}
                       onChange={handleChange}
                     />
@@ -259,13 +343,13 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                       type="text"
                       name="username"
                       placeholder={t.placeholderUsername}
-                      className="w-full p-2 text-black bg-primary-primaryColor border border-gray-400 rounded-md"
+                      className="w-full p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
                       value={formData.username}
                       onChange={handleChange}
                     />
                   </div>
 
-                  <div className="  flex flex-col">
+                  <div className="flex flex-col">
                     <h3>{t.password}</h3>
                     <div className="relative">
                       <input
@@ -281,6 +365,32 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                         onClick={() => setShowPassword(!showPassword)}
                       >
                         {showPassword ? (
+                          <FaEye className="text-textPrimary " />
+                        ) : (
+                          <FaEyeSlash className="text-textPrimary " />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <h3>{t.confirmPassword}</h3>
+                    <div className="relative">
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        name="confirmPassword"
+                        placeholder={t.placeholderPassword}
+                        className="w-full p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                      />
+                      <div
+                        className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
+                        onClick={() =>
+                          setShowConfirmPassword(!showConfirmPassword)
+                        }
+                      >
+                        {showConfirmPassword ? (
                           <FaEye className="text-textPrimary " />
                         ) : (
                           <FaEyeSlash className="text-textPrimary " />
@@ -400,11 +510,10 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                         onChange={handleChange}
                       />
                       <div className="px-4 flex items-center gap-2 rounded-md bg-black">
-                        <div className="text-white text-lg">7832</div>
-                        <button
-                          type="button"
-                          onClick={() => alert("Code reloaded!")}
-                        >
+                        <div className="text-white text-lg">
+                          {generatedCode}
+                        </div>
+                        <button type="button" onClick={handleReloadCode}>
                           <TbReload className="text-2xl text-white" />
                         </button>
                       </div>
@@ -449,8 +558,15 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                     <button
                       type="submit"
                       className="bg-primary-primaryColorTwo w-full text-white px-6 py-2 rounded-md ml-auto"
+                      disabled={loading}
                     >
-                      {step === 2 ? t.finalSubmit : t.submit}
+                      {loading ? (
+                        <SpinLoader />
+                      ) : step === 2 ? (
+                        t.finalSubmit
+                      ) : (
+                        t.submit
+                      )}
                     </button>
                   )}
 
@@ -476,10 +592,16 @@ const RegisterFacai = ({ handleLoginOpen }) => {
       </div>
 
       {/* phoneDevice */}
-      <div className="pb-14 md:hidden   mx-auto lg:max-w-6xl bg-primary-primaryColorTwo text-white">
+      <div className="pb-14 md:hidden  mx-auto lg:max-w-6xl bg-primary-primaryColorTwo text-white">
         <div className="flex flex-col lg:flex-row gap-4 lg:border-4 border-textPrimary p-6">
           <div className="     flex justify-center items-center ">
-            <img src={mainLogo} alt="" className="w-[30%]" />
+            <img
+              src={`${import.meta.env.VITE_BASE_API_URL}${
+                logoHomeControl?.image
+              }`}
+              alt=""
+              className="w-[30%]"
+            />
           </div>
           {/* Image Section */}
           <div className="lg:w-full">
@@ -487,7 +609,7 @@ const RegisterFacai = ({ handleLoginOpen }) => {
               src={mobileImage}
               alt="Sign Up Illustration"
               className="w-full h-full cursor-pointer"
-              onClick={() => console.log("Image clicked")}
+              // onClick={() => console.log("Image clicked")}
             />
           </div>
 
@@ -547,7 +669,7 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                 type="text"
                 name="username"
                 placeholder={t.placeholderUsername}
-                className="w-full p-2 text-black bg-componentBgSecondary border border-gray-400 rounded-md"
+                className="w-full p-2 text-white bg-componentBgSecondary border border-gray-400 rounded-md"
                 value={formData.username}
                 onChange={handleChange}
               />
@@ -569,6 +691,30 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
+                    <FaEye className="text-textPrimary " />
+                  ) : (
+                    <FaEyeSlash className="text-textPrimary " />
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              <h3>{t.confirmPassword}</h3>
+              <div className="relative">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  name="confirmPassword"
+                  placeholder={t.placeholderPassword}
+                  className="w-full p-2 text-white bg-componentBgSecondary border border-gray-400 rounded-md"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                />
+                <div
+                  className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? (
                     <FaEye className="text-textPrimary " />
                   ) : (
                     <FaEyeSlash className="text-textPrimary " />
@@ -641,13 +787,13 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                   type="text"
                   name="verificationCode"
                   placeholder={t.placeholderVerificationCode}
-                  className="w-full p-2 text-white bg-componentBgSecondary placeholder:text-xs border border-gray-400 rounded-md"
+                  className="w-2/3 p-2 text-white bg-primary-primaryColor border border-gray-400 rounded-md"
                   value={formData.verificationCode}
                   onChange={handleChange}
                 />
                 <div className="px-4 flex items-center gap-2 rounded-md bg-black">
-                  <div className="text-white text-lg">7832</div>
-                  <button type="button" onClick={() => alert("Code reloaded!")}>
+                  <div className="text-white text-lg">{generatedCode}</div>
+                  <button type="button" onClick={handleReloadCode}>
                     <TbReload className="text-2xl text-white" />
                   </button>
                 </div>
@@ -659,8 +805,9 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                 <button
                   type="submit"
                   className="bg-backgroundSecondaryColor w-full text-white px-6 py-2 rounded-md ml-auto"
+                  disabled={loading}
                 >
-                  {t.finalSubmit}
+                  {loading ? <SpinLoader /> : t.finalSubmit}
                 </button>
 
                 <div className="text-white py-4 flex  lg:flex-row items-center gap-2">
@@ -678,12 +825,12 @@ const RegisterFacai = ({ handleLoginOpen }) => {
                 </div>
 
                 <div className="flex  space-x-2 text-xs">
-                  <input
+                  {/* <input
                     type="checkbox"
                     name="agreed"
                     checked={formData.agreed}
                     onChange={handleCheckboxChange}
-                  />
+                  /> */}
                   <label>
                     {t.legal}{" "}
                     <Link

@@ -33,11 +33,11 @@ const usersApi = (usersCollection, homeControlsCollection) => {
   // Register a new user
   router.post("/register", async (req, res) => {
     const userInfo = req.body;
-    if (!userInfo?.username || !userInfo?.email || !userInfo?.password) {
-      return res
-        .status(400)
-        .json({ error: "Username, Email and password are required" });
-    }
+    // if (!userInfo?.username || !userInfo?.email || !userInfo?.password) {
+    //   return res
+    //     .status(400)
+    //     .json({ error: "Username, Email and password are required" });
+    // }
     try {
       const existingUser = await usersCollection.findOne({
         username: userInfo?.username,
