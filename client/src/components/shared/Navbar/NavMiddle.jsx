@@ -248,7 +248,7 @@ const NavMiddle = ({ navItems }) => {
               <Link to="/register">
                 
                 <p
-                className="px-7 py-1 bg-white-to-gold to-[#C9A33Dcc]  hover:border border border-transparent rounded cursor-pointer"
+                className="px-7 py-1 bg-gold-gradient   hover:border border border-transparent rounded cursor-pointer"
                 // onClick={handleModalOpen}
               >
                সাইন আপ
