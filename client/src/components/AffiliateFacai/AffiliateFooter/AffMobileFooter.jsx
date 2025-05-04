@@ -1,41 +1,41 @@
-import { LanguageContext } from '@/Context/LanguageContext';
-import React, { useContext } from 'react';
+import { LanguageContext } from "@/Context/LanguageContext";
+import React, { useContext } from "react";
 import bnFlag from "../../../assets/v2/bn-flag.jpg";
+import { Link } from "react-router-dom";
 
-const AffMobileFooter = () => {
-    const { language } = useContext(LanguageContext);
-    return (
-        <div className="sticky bottom-0 z-40 flex flex-row items-center justify-center   text-white font-bold md:hidden">
-
-            <span className="font-semibold bg-gray-200 flex items-center justify-center w-1/3 py-4 gap-1 cursor-pointer">
-                        <img src={bnFlag} alt="" className="h-6" />
-                        <span
-                          className="text-black text-center text-sm
+const AffMobileFooter = ({ toggleOpenLanguage }) => {
+  const { language } = useContext(LanguageContext);
+  return (
+    <div className="sticky bottom-0 z-40 flex flex-row items-center justify-center   text-white font-bold md:hidden">
+      <span
+        className="font-semibold bg-backgroundSecondaryColor flex items-center justify-center w-1/3 py-4 gap-1 cursor-pointer"
+        onClick={toggleOpenLanguage}
+      >
+        <img src={bnFlag} alt="" className="h-6" />
+        <span
+          className="text-white text-center text-sm
                         "
-                        //   onClick={toggleOpenLanguage}
-                        >
-                          English 
-                        </span>
-                      </span>
-            
-                      <div
-                        // onClick={() => setIsModalOpen(true)}
-                        className="w-1/3 bg-primary-primaryColorTwo py-4 text-center"
-                        
-                      >
-                        {language === "en" ? "Sign up" : "সাইন আপ "}
-                      </div>
-            
-                      <div
-                    //   onClick={() => setIsModalLoginOpen(true)}
-                        className="w-1/3 bg-backgroundSecondaryColor py-4 text-center text-white"
-                        
-                      >
-                        {language === "en" ? "Login" : "লগ ইন"}
-                      </div>
-            
-        </div>
-    );
+        >
+          {language === "en" ? "English" : " বাংলা"}
+        </span>
+      </span>
+
+      <Link
+        to="/affiliate/signup"
+        className="w-1/3 bg-primary-primaryColorTwo py-4 text-center block"
+      >
+        {language === "en" ? "Sign up" : "সাইন আপ"}
+      </Link>
+
+      <Link to="/affiliate/login"
+      className="w-1/3 bg-backgroundSecondaryColor py-4 text-center text-white"
+      >
+        
+          {language === "en" ? "Login" : "লগ ইন"}
+        
+      </Link>
+    </div>
+  );
 };
 
 export default AffMobileFooter;
