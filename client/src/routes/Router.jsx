@@ -92,6 +92,7 @@ import PrivacyPolicyInfo from "@/pages/extra/PrivacyPolicyInfo";
 import FaqInfo from "@/pages/extra/FaqInfo";
 import DepositPhone from "@/pages/DepositPhone";
 import AffiliateFacaiLayout from "@/layouts/AffiliateFacaiLayout";
+import AffiliateForgetPass from "@/pages/AffiliateForgetPass/AffiliateForgetPass";
 
 const router = createBrowserRouter([
   {
@@ -328,6 +329,10 @@ const router = createBrowserRouter([
   {
     path: "/affiliate/signup",
     element: <AffiliateSignUp />,
+  },
+  {
+    path: "/affiliate/forgetpass",
+    element: <AffiliateForgetPass />,
   },
 
   {

@@ -7,12 +7,13 @@ import Header from "@/components/shared/header/Header";
 import Footer2 from "@/components/shared/Footer/Footer2";
 import { useGetAllCategoriesQuery } from "@/redux/features/allApis/categoryApi/categoryApi";
 import { useGetAllSubCategoriesQuery } from "@/redux/features/allApis/categoryApi/subCategoryApi";
-import BDTModal from "@/components/BDTModal/BDTModat";
+// import BDTModal from "@/components/BDTModalFacai/BDTModalFacai";
 import { LanguageContext } from "@/Context/LanguageContext";
 import Loader from "@/components/Loader/Loader";
 import RegisterModal from "@/pages/home/Register/RegisterModal";
 import LoginModal from "@/pages/home/Login/LoginModal";
 import ForgetPasswordModal from "@/pages/home/ForgetPassword/ForgetPasswordModel";
+import BDTModalFacai from "@/components/BDTModalFacai/BDTModalFacai";
 
 const MainLayout = () => {
   const navigation = useNavigation();
@@ -82,7 +83,7 @@ const MainLayout = () => {
           setIsModalLoginOpen={setIsModalLoginOpen}
         />
       </div>
-      <BDTModal
+      <BDTModalFacai
         isOpenLanguage={isOpenLanguage}
         toggleCloseLanguage={toggleCloseLanguage}
         currentLang={language}
