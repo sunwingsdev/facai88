@@ -6,7 +6,7 @@ import AffiliatePhoneNavbar from "./AffiliatePhoneNavbar";
 import { AiFillHome } from "react-icons/ai";
 import { LanguageContext } from "@/Context/LanguageContext";
 
-const AffiliateNavbar = ({ toggleOpenLanguage }) => {
+const AffiliateNavbar = ({ toggleOpenLanguage,showModal,openModal }) => {
   const { language } = useContext(LanguageContext);
 
   // EN এবং BN অনুযায়ী navItems এর title সেট করা হয়েছে
@@ -40,7 +40,8 @@ const AffiliateNavbar = ({ toggleOpenLanguage }) => {
     {
       key: "contact",
       title: { en: "Contact Us", bn: "যোগাযোগ করুন" },
-      link: "",
+      link: "/affiliate/contact",
+      showModal: true,
     },
   ];
   
@@ -50,10 +51,18 @@ const AffiliateNavbar = ({ toggleOpenLanguage }) => {
       <div className="hidden lg:block">
         <AffiliateTopNavbar toggleOpenLanguage={toggleOpenLanguage} />
         <AffiliateBottomNavbar />
-        <AffiliateBottomNavbarTwo navItems={navItems} />
+        <AffiliateBottomNavbarTwo 
+        navItems={navItems} 
+        showModal={showModal}
+        openModal={openModal}
+        />
       </div>
       <div className="lg:hidden">
-        <AffiliatePhoneNavbar navItems={navItems} />
+        <AffiliatePhoneNavbar
+         navItems={navItems} 
+         showModal={showModal}
+         openModal={openModal}
+         />
       </div>
     </div>
   );

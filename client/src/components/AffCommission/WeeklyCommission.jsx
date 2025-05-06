@@ -89,11 +89,12 @@ const WeeklyCommission = () => {
         <div className="text-3xl md:text-4xl pt-16 py-4 flex flex-col gap-6 text-white">
           <h3 className="text-center">{heading}</h3>
           <p className="text-center">
-            <strong className="text-textSecondaryColor">
-              {subheading.split(" ")[0]}
-            </strong>{" "}
-            {subheading.replace(subheading.split(" ")[0], "")}
-          </p>
+  <strong className="text-textSecondaryColorTwo">
+    {subheading.split(" ").slice(0, 3).join(" ")}
+  </strong>{" "}
+  {subheading.split(" ").slice(3).join(" ")}
+</p>
+
         </div>
 
         <div className="p-4">
