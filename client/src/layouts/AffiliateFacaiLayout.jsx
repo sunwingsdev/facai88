@@ -24,11 +24,11 @@ const AffiliateFacaiLayout = () => {
   };
   return (
     <>
-      <div className="">
+      <div className="App">
         <AffiliateNavbar toggleOpenLanguage={toggleOpenLanguage} />
-        <div className="h-screen">
+        <main >
           <Outlet />
-        </div>
+        </main>
         <AffFooter toggleOpenLanguage={toggleOpenLanguage} />
       </div>
 
