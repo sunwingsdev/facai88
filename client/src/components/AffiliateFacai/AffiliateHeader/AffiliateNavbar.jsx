@@ -20,22 +20,22 @@ const AffiliateNavbar = ({ toggleOpenLanguage }) => {
     {
       key: "commissions",
       title: { en: "Commissions", bn: "কমিশনস" },
-      link: "",
+      link: "/affiliate/commission",
     },
     {
       key: "promotions",
       title: { en: "Promotions", bn: "প্রমোশনস" },
-      link: "",
+      link: "/affiliate/promotions",
     },
     {
       key: "product",
       title: { en: "Product", bn: "প্রোডাক্ট" },
-      link: "",
+      link: "/affiliate/product",
     },
     {
       key: "guides",
       title: { en: "Affiliate Guides", bn: "অ্যাফিলিয়েট গাইডস" },
-      link: "",
+      link: "/affiliate/guide",
     },
     {
       key: "contact",
@@ -46,13 +46,13 @@ const AffiliateNavbar = ({ toggleOpenLanguage }) => {
   
 
   return (
-    <div>
-      <div className="hidden md:block">
+    <div className="sticky top-0 bg-white shadow-md font-sans z-40 ">
+      <div className="hidden lg:block">
         <AffiliateTopNavbar toggleOpenLanguage={toggleOpenLanguage} />
         <AffiliateBottomNavbar />
         <AffiliateBottomNavbarTwo navItems={navItems} />
       </div>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <AffiliatePhoneNavbar navItems={navItems} />
       </div>
     </div>

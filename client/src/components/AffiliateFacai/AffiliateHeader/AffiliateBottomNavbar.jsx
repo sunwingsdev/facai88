@@ -6,7 +6,7 @@ import { LanguageContext } from "@/Context/LanguageContext";
 const AffiliateBottomNavbar = () => {
   const { language } = useContext(LanguageContext);
   return (
-    <div className="bg-[#212335] py-2">
+    <div className="bg-AffiliatePrimaryBg py-2">
       <div className="flex justify-between items-center mx-auto max-w-7xl px-4">
         <div>
           <img src={affiliateLogo} alt="" className="w-[20%]" />

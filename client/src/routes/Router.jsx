@@ -93,6 +93,12 @@ import FaqInfo from "@/pages/extra/FaqInfo";
 import DepositPhone from "@/pages/DepositPhone";
 import AffiliateFacaiLayout from "@/layouts/AffiliateFacaiLayout";
 import AffiliateForgetPass from "@/pages/AffiliateForgetPass/AffiliateForgetPass";
+import AffHome from "@/pages/AffiliateFacai/AffHome";
+import AffCondition from "@/pages/AffiliateFacai/AffCondition";
+import AffCommission from "@/pages/AffiliateFacai/AffCommission";
+import AffPromotions from "@/pages/AffiliateFacai/AffPromotions";
+import AffProduct from "@/pages/AffiliateFacai/AffProduct";
+import AffGuide from "@/pages/AffiliateFacai/AffGuide";
 
 const router = createBrowserRouter([
   {
@@ -312,10 +318,30 @@ const router = createBrowserRouter([
     path: "/affiliate",
     element: <AffiliateFacaiLayout />,
     children: [
-      // {
-      //   path: "",
-      //   element: <HomeAffiliate />,
-      // },
+      {
+        path: "",
+        element: <AffHome />,
+      },
+      {
+        path: "commission",
+        element: <AffCommission />,
+      },
+      {
+        path: "promotions",
+        element: <AffPromotions />,
+      },
+      {
+        path: "product",
+        element: <AffProduct />,
+      },
+      {
+        path: "guide",
+        element: <AffGuide />,
+      },
+      {
+        path: "conditions",
+        element: <AffCondition />,
+      },
       
       
     ],

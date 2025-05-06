@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const AffMobileFooter = ({ toggleOpenLanguage }) => {
   const { language } = useContext(LanguageContext);
   return (
-    <div className="sticky bottom-0 z-40 flex flex-row items-center justify-center   text-white font-bold md:hidden">
+    <div className="fixed  bottom-0 flex  left-0 w-full bg-black    z-40  flex-row items-center justify-center   text-white font-bold ">
       <span
         className="font-semibold bg-backgroundSecondaryColor flex items-center justify-center w-1/3 py-4 gap-1 cursor-pointer"
         onClick={toggleOpenLanguage}

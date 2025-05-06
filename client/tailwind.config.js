@@ -19,6 +19,7 @@ export default {
         componentBgPrimary:"#222843",
         componentBgSecondary:"#243254",
         backgroundSecondaryColor: "#C9A33D",
+        AffiliatePrimaryBg:"#212335",
         bottomNavBgColor: "#2a3254",
         foreground: "hsl(var(--foreground))",
         card: {

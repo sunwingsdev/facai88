@@ -14,7 +14,7 @@ const AffiliatePhoneNavbar = ({ navItems }) => {
   return (
     <>
       <div className="bg-primary-primaryColor">
-        <div className="flex justify-between items-center p-2">
+        <div className="flex  justify-between items-center p-2">
           <button onClick={() => setIsOpen(!isOpen)}>
             <HiMenuAlt2 className="text-textSecondaryColor w-6 h-6" />
           </button>
@@ -92,7 +92,9 @@ const AffiliatePhoneNavbar = ({ navItems }) => {
               className="flex items-center text-lg p-3 text-gray-300 hover:bg-primary-primaryColorTwo hover:border-textSecondaryColor border-b  border-white border-opacity-20 hover:border-b-2"
               onClick={() => setIsOpen(false)}
             >
-              <span>{language === "en" ? "Download App" : "অ্যাপ ডাউনলোড করুন"}</span>
+              <span>
+                {language === "en" ? "Download App" : "অ্যাপ ডাউনলোড করুন"}
+              </span>
             </Link>
           </li>
         </ul>
