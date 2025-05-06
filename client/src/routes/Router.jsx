@@ -99,6 +99,8 @@ import AffCommission from "@/pages/AffiliateFacai/AffCommission";
 import AffPromotions from "@/pages/AffiliateFacai/AffPromotions";
 import AffProduct from "@/pages/AffiliateFacai/AffProduct";
 import AffGuide from "@/pages/AffiliateFacai/AffGuide";
+import AffContact from "@/pages/AffiliateFacai/AffContact";
+import AffDiamondVolt from "@/pages/AffiliateFacai/AffDiamondVolt";
 
 const router = createBrowserRouter([
   {
@@ -331,12 +333,20 @@ const router = createBrowserRouter([
         element: <AffPromotions />,
       },
       {
+        path: "diamond-volt",
+        element: <AffDiamondVolt />,
+      },
+      {
         path: "product",
         element: <AffProduct />,
       },
       {
         path: "guide",
         element: <AffGuide />,
+      },
+      {
+        path: "contact",
+        element: <AffContact />,
       },
       {
         path: "conditions",

@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { LanguageContext } from '@/Context/LanguageContext';
+import { Link } from 'react-router-dom';
 
 // English images
 import image1 from "../../assets/affiliateImages/Slider1.jpg";
@@ -8,15 +11,14 @@ import image2 from "../../assets/affiliateImages/Slider2.jpg";
 import image3 from "../../assets/affiliateImages/Slider3.jpg";
 import imageThree from "../../assets/affiliateImages/smallSlider2.jpg";
 
-// Bangla versions of image1 and image3
+// Bangla versions
 import image1Bn from "../../assets/affiliateImages/banner-bn_ipl2025.jpg";
 import imageOneBn from "../../assets/affiliateImages/banner-bn-mob_ipl2025.jpg";
 import image3Bn from "../../assets/affiliateImages/name_MS_Main-Banner-Mobile_1588x719-1.jpg";
 import imageThreeBn from "../../assets/affiliateImages/bt_bdt_bn_860x760.jpg";
 
+// Overlay image
 import topImage from "../../assets/affiliateImages/slider2Part1.png";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { LanguageContext } from '@/Context/LanguageContext';
 
 const AffImageSlider = () => {
   const { language } = useContext(LanguageContext);
@@ -24,14 +26,17 @@ const AffImageSlider = () => {
 
   const slides = [
     {
+      key: 'introBanner',
       image: isBn ? image1Bn : image1,
       imageSm: isBn ? imageOneBn : imageOne,
       textEN: '',
       subTextEN: '',
       textBN: '',
       subTextBN: '',
+      link: "/affiliate/diamond-volt"
     },
     {
+      key: 'commissionTextBanner',
       image: image2,
       imageSm: image2,
       textEN: 'Sign up today and earn up to 52% Lifetime commission with MCW AFFILIATES',
@@ -40,6 +45,7 @@ const AffImageSlider = () => {
       subTextBN: 'বিদ্যুৎগতির পেআউট, সীমাহীন রেভিনিউ শেয়ার এবং কোনো বিনিয়োগের প্রয়োজন নেই। এখনই শুরু করুন আপনার আয়!',
     },
     {
+      key: 'closingBanner',
       image: isBn ? image3Bn : image3,
       imageSm: isBn ? imageThreeBn : imageThree,
       textEN: '',
@@ -49,29 +55,28 @@ const AffImageSlider = () => {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentImage, setCurrentImage] = useState(slides[0].key);
+
+  const currentImageIndex = slides.findIndex(slide => slide.key === currentImage);
+  const currentSlide = slides[currentImageIndex];
+
+  const prevImage = currentImageIndex === 0 ? slides.length - 1 : currentImageIndex - 1;
+  const nextImage = (currentImageIndex + 1) % slides.length;
+
+  const goToPrev = () => setCurrentImage(slides[prevImage].key);
+  const goToNext = () => setCurrentImage(slides[nextImage].key);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % slides.length);
+      setCurrentImage(slides[nextImage].key);
     }, 6000);
     return () => clearInterval(interval);
-  }, []);
-
-  const goToPrev = () => {
-    setCurrentIndex(prevIndex => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
-  };
-
-  const goToNext = () => {
-    setCurrentIndex(prevIndex => (prevIndex + 1) % slides.length);
-  };
-
-  const currentSlide = slides[currentIndex];
+  }, [currentImage]);
 
   return (
     <div className="w-full flex flex-col items-center">
       <div className="relative w-full h-full group overflow-hidden">
-        {currentIndex === 1 ? (
+        {currentSlide.key === 'commissionTextBanner' ? (
           <div
             className="w-full h-auto lg:h-auto md:h-[550px] bg-cover bg-center flex flex-col md:flex-row items-center justify-center md:gap-24 pb-20 md:pb-0 px-4"
             style={{ backgroundImage: `url(${currentSlide.image})` }}
@@ -84,34 +89,42 @@ const AffImageSlider = () => {
             >
               <img src={topImage} alt="Overlay" className="w-full" />
             </motion.div>
+
             <div className="text-white flex flex-col gap-2 text-2xl md:text-3xl justify-center md:justify-normal items-center md:items-start font-semibold md:w-[30%]">
-              <p className="text-textSecondaryColor text-center md:text-left md:px-0 font-semibold">
+              <p className="text-textSecondaryColor text-center md:text-left font-semibold">
                 {isBn ? currentSlide.textBN : currentSlide.textEN}
               </p>
-              <p className="text-base text-center md:px-0 md:text-left mt-2">
+              <p className="text-base text-center md:text-left mt-2">
                 {isBn ? currentSlide.subTextBN : currentSlide.subTextEN}
               </p>
-              <button className="bg-backgroundSecondaryColor w-[35%] md:w-[50%] lg:w-[35%] rounded-md text-sm py-1">
-                {isBn ? 'আরও জানুন' : 'Learn More'}
-              </button>
+              <Link
+                to="/affiliate/commission"
+                className="bg-backgroundSecondaryColor w-[35%] md:w-[50%] lg:w-[35%] rounded-md text-sm px-2 py-1"
+              >
+                <button>
+                  {isBn ? 'আরও জানুন' : 'Learn More'}
+                </button>
+              </Link>
             </div>
           </div>
         ) : (
           <>
+            <Link to={currentSlide.link}>
             <img
               src={currentSlide.image}
-              alt=""
+              alt="Desktop Slide"
               className="w-full hidden md:block object-cover"
             />
             <img
               src={currentSlide.imageSm}
-              alt=""
+              alt="Mobile Slide"
               className="w-full h-[500px] object-cover md:h-[550px] md:hidden"
             />
+          </Link>
           </>
         )}
 
-        {/* Arrows */}
+        {/* Navigation arrows */}
         <button
           onClick={goToPrev}
           className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white hover:text-textSecondaryColor md:text-2xl lg:text-6xl px-3 py-1 opacity-0 group-hover:opacity-100 transition duration-300"
@@ -120,7 +133,7 @@ const AffImageSlider = () => {
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white hover:text-textSecondaryColor md:text-2xl  lg:text-6xl px-3 py-1 opacity-0 group-hover:opacity-100 transition duration-300"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white hover:text-textSecondaryColor md:text-2xl lg:text-6xl px-3 py-1 opacity-0 group-hover:opacity-100 transition duration-300"
         >
           <FaChevronRight />
         </button>

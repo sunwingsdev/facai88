@@ -181,6 +181,9 @@ const AffGuideTabs = () => {
   return (
     <div className="bg-AffiliatePrimaryBg">
       <div className="max-w-7xl text-white mx-auto p-4">
+        <h3 className="text-center text-5xl py-[4%]"> <span className="text-textSecondaryColorTwo">
+        AFFILIATE
+          </span> GUIDE</h3>
         {/* Tabs */}
         <div className="flex flex-col gap-2 lg:gap-0 text-sm lg:text-lg lg:flex-row mb-6">
           {tabs.map((tab) => (

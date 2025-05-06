@@ -5,8 +5,9 @@ import { AiFillHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import affiliateLogo from "../../../assets/v2/MCW_Aff_Logo.png";
 import { LanguageContext } from "@/Context/LanguageContext"; // Importing the LanguageContext
+import AffModal from "@/components/AffModal/AffModal";
 
-const AffiliatePhoneNavbar = ({ navItems }) => {
+const AffiliatePhoneNavbar = ({ navItems,showModal,openModal }) => {
   const { language } = useContext(LanguageContext); // Getting the current language
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Home");
@@ -66,6 +67,7 @@ const AffiliatePhoneNavbar = ({ navItems }) => {
               <li>
                 <Link
                   to={link}
+                  
                   className={`flex items-center text-lg p-3 text-white
                     ${
                       key === "promotions"
@@ -74,10 +76,13 @@ const AffiliatePhoneNavbar = ({ navItems }) => {
                         ? "text-textSecondaryColor border-textSecondaryColor bg-primary-primaryColorTwo border-b-2"
                         : "text-gray-300 hover:bg-primary-primaryColorTwo hover:border-textSecondaryColor border-b  border-white border-opacity-20 hover:border-b-2"
                     }`}
-                  onClick={() => {
-                    setActiveTab(key);
-                    setIsOpen(false);
-                  }}
+                    onClick={() => {
+                      setActiveTab(key);
+                      setIsOpen(false);
+                      if (key === "contact") {
+                        openModal(); // ✅ open modal from global context
+                      }
+                    }}
                 >
                   <span>{title[language]}</span>
                 </Link>
@@ -98,7 +103,11 @@ const AffiliatePhoneNavbar = ({ navItems }) => {
             </Link>
           </li>
         </ul>
+
       </div>
+      {showModal && (
+              <AffModal/>
+            )}
     </>
   );
 };
