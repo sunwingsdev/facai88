@@ -26,7 +26,7 @@ const withdrawMethodApi = require("./apis/paymentMethodApi/withdrawMethodApi");
 const referCodeApi = require("./apis/referCodeApi/referCodeApi");
 const commissionApi = require("./apis/commissionApi/commissionApi");
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5000;
 
 // CORS configuration
 const corsConfig = {
@@ -155,9 +155,13 @@ async function run() {
     const withdrawMethodCollection = database.collection("withdraw-methods");
     const referCodesCollection = database.collection("refer-links");
     const commissionsCollection = database.collection("commissions");
+    const balanceHistoryCollection = database.collection("balance-histories");
 
     // API routes
-    app.use("/users", usersApi(usersCollection, homeControlCollection));
+    app.use(
+      "/users",
+      usersApi(usersCollection, homeControlCollection, balanceHistoryCollection)
+    );
     app.use("/users", agentsApi(usersCollection, homeControlCollection));
     app.use("/users", affiliatesApi(usersCollection, homeControlCollection));
     app.use("/deposits", depositsApi(depositsCollection, usersCollection));

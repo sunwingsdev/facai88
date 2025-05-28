@@ -14,19 +14,29 @@ import { FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import {
+  useAddUserBalanceMutation,
   useLazyGetUserByIdQuery,
+  useSubtractUserBalanceMutation,
   useUpdateUserStatusMutation,
 } from "@/redux/features/allApis/usersApi/usersApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setSingleUser } from "@/redux/slices/authSlice";
 import Swal from "sweetalert2";
+import { useToasts } from "react-toast-notifications";
+import { useGetDepositsByUserQuery } from "@/redux/features/allApis/depositsApi/depositsApi";
+import { useGetWithdrawsByUserQuery } from "@/redux/features/allApis/withdrawsApi/withdrawsApi";
 
 const UserDetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [getSingleUser] = useLazyGetUserByIdQuery();
+  const [addUserBalance] = useAddUserBalanceMutation();
+  const [subtractUserBalance] = useSubtractUserBalanceMutation();
   const [updateUserStatus] = useUpdateUserStatusMutation();
+  const { data: userDeposits } = useGetDepositsByUserQuery(id);
+  const { data: userWithdraws } = useGetWithdrawsByUserQuery(id);
   const [loading, setLoading] = useState(false);
+  const { addToast } = useToasts();
 
   const [modalMode, setModalMode] = useState("add");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -92,31 +102,34 @@ const UserDetailsPage = () => {
 
   console.log(singleUser);
 
+  const totalTransactions =
+    (userDeposits?.length || 0) + (userWithdraws?.length || 0);
+
   const topCards = [
     {
       label: "Main Balance",
-      value: `TK ${mainBalance.toFixed(2)} BDT`,
+      value: `TK ${singleUser?.balance?.toFixed(2) ?? 0} BDT`,
       mainColor: "bg-blue-900",
       subColor: "bg-blue-700",
       Icon: LiaMoneyBillWaveAltSolid,
     },
     {
       label: "Deposit Balance",
-      value: "TK0.00 BDT",
+      value: `TK ${singleUser?.depositBalance ?? 0} BDT`,
       mainColor: "bg-green-600",
       subColor: "bg-green-700",
       Icon: LiaWalletSolid,
     },
     {
       label: "Withdrawals",
-      value: "TK0.00 BDT",
+      value: `TK ${singleUser?.withdrawBalance ?? 0} BDT`,
       mainColor: "bg-orange-600",
       subColor: "bg-orange-700",
       Icon: HiOutlineBuildingLibrary,
     },
     {
       label: "Transactions",
-      value: "0",
+      value: `${totalTransactions ?? 0}`,
       mainColor: "bg-blue-900",
       subColor: "bg-blue-700",
       Icon: GoArrowSwitch,
@@ -146,6 +159,64 @@ const UserDetailsPage = () => {
       } catch (error) {
         Swal.fire("Error!", "Something went wrong.", "error");
       }
+    }
+  };
+
+  const handleAddBalanceSubmit = async () => {
+    if (!inputBalance || isNaN(inputBalance)) {
+      addToast("Please enter a valid amount.", { appearance: "warning" });
+      return;
+    }
+
+    const amount = parseFloat(inputBalance);
+
+    try {
+      await addUserBalance({
+        id: id,
+        amountToAdd: amount,
+        token,
+      }).unwrap();
+
+      setIsModalOpen(false);
+      setInputBalance("");
+
+      addToast("Balance added successfully.", { appearance: "success" });
+
+      // Refresh user info
+      const refreshed = await getSingleUser(id);
+      if (refreshed.data) dispatch(setSingleUser(refreshed.data));
+    } catch (err) {
+      console.error(err);
+      addToast("Failed to add balance.", { appearance: "error" });
+    }
+  };
+
+  const handleSubtractBalanceSubmit = async () => {
+    if (!inputBalance || isNaN(inputBalance)) {
+      addToast("Please enter a valid amount.", { appearance: "warning" });
+      return;
+    }
+
+    const amount = parseFloat(inputBalance);
+
+    try {
+      await subtractUserBalance({
+        id: id,
+        amountToSubtract: amount,
+        token,
+      }).unwrap();
+
+      setIsModalOpen(false);
+      setInputBalance("");
+
+      addToast("Balance subtracted successfully.", { appearance: "success" });
+
+      // Refresh user info
+      const refreshed = await getSingleUser(id);
+      if (refreshed.data) dispatch(setSingleUser(refreshed.data));
+    } catch (err) {
+      console.error(err);
+      addToast("Failed to subtract balance.", { appearance: "error" });
     }
   };
 
@@ -383,43 +454,28 @@ const UserDetailsPage = () => {
       </div>
       {/* Add and subtract balance modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 shadow-lg w-96 space-y-4">
-            <h2 className="text-xl font-semibold text-gray-800">
-              {modalMode === "add" ? "Add Balance" : "Subtract Balance"}
+        <div className="bg-black/50 fixed inset-0 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg p-6 w-96 space-y-4 shadow-lg">
+            <h2 className="text-lg font-bold">
+              {modalMode === "add" ? "Add" : "Subtract"} Balance
             </h2>
             <Input
               type="number"
-              placeholder={`Enter amount to ${modalMode}`}
+              placeholder="Enter Amount"
               value={inputBalance}
               onChange={(e) => setInputBalance(e.target.value)}
             />
             <div className="flex justify-end gap-2">
-              <Button
-                className="bg-gray-500 hover:bg-gray-600"
-                onClick={() => {
-                  setIsModalOpen(false);
-                  setInputBalance("");
-                }}
-              >
+              <Button variant="outline" onClick={() => setIsModalOpen(false)}>
                 Cancel
               </Button>
               <Button
-                className={`${
+                className={modalMode === "add" ? "bg-green-600" : "bg-red-600"}
+                onClick={
                   modalMode === "add"
-                    ? "bg-green-600 hover:bg-green-700"
-                    : "bg-red-600 hover:bg-red-700"
-                }`}
-                onClick={() => {
-                  const parsed = parseFloat(inputBalance);
-                  if (!isNaN(parsed)) {
-                    setMainBalance((prev) =>
-                      modalMode === "add" ? prev + parsed : prev - parsed
-                    );
-                    setInputBalance("");
-                    setIsModalOpen(false);
-                  }
-                }}
+                    ? handleAddBalanceSubmit
+                    : handleSubtractBalanceSubmit
+                }
               >
                 {modalMode === "add" ? "Add" : "Subtract"}
               </Button>

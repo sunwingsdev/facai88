@@ -10,7 +10,7 @@ const HeadingContent = ({ heading, contents, contentWidth, wrap }) => {
         }`}
       >
         {contents?.map((content) => (
-          <>
+          <div key={content.id}>
             {content.route ? (
               <Link key={content.id} to={content.route} target="_blank">
                 <img
@@ -33,7 +33,7 @@ const HeadingContent = ({ heading, contents, contentWidth, wrap }) => {
                 alt={content.id} // Always include alt text for accessibility
               />
             )}
-          </>
+          </div>
         ))}
       </div>
     </div>

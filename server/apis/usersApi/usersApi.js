@@ -3,7 +3,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { ObjectId } = require("mongodb");
 
-const usersApi = (usersCollection, homeControlsCollection) => {
+const usersApi = (
+  usersCollection,
+  homeControlsCollection,
+  balanceHistoryCollection
+) => {
   const router = express.Router();
   const jwtSecret = process.env.JWT_SECRET;
 
@@ -187,7 +191,7 @@ const usersApi = (usersCollection, homeControlsCollection) => {
       const logoUrl = `${process.env.SERVER_URL}${logoData.image}`;
 
       const result = await usersCollection.updateOne(
-        { _id: new ObjectId(id), role: "agent" },
+        { _id: new ObjectId(id) },
         { $set: { status: status.toLowerCase(), updatedAt: new Date() } }
       );
 
@@ -349,6 +353,140 @@ const usersApi = (usersCollection, homeControlsCollection) => {
       res.status(200).json({ message: "Profile image updated successfully" });
     } catch (error) {
       res.status(500).json({ error: "Failed to update profile image" });
+    }
+  });
+
+  // Update user's balance by adding new amount
+  router.put("/add-balance/:id", authenticateToken, async (req, res) => {
+    const { id } = req.params;
+    const { amountToAdd } = req.body;
+
+    // Validate ID and amount
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid user ID" });
+    }
+
+    if (typeof amountToAdd !== "number" || amountToAdd <= 0) {
+      return res
+        .status(400)
+        .json({ error: "Amount must be a positive number" });
+    }
+
+    try {
+      const user = await usersCollection.findOne({ _id: new ObjectId(id) });
+      console.log("req.user", req.user, "user", user);
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const updatedBalance = (user.balance || 0) + amountToAdd;
+
+      const result = await usersCollection.updateOne(
+        { _id: new ObjectId(id) },
+        {
+          $set: {
+            balance: updatedBalance,
+            updatedAt: new Date(),
+          },
+        }
+      );
+
+      if (result.modifiedCount === 0) {
+        return res.status(500).json({ error: "Failed to update balance" });
+      }
+
+      // 🟢 Insert history
+      await balanceHistoryCollection.insertOne({
+        userId: user._id,
+        username: user.username,
+        amount: amountToAdd,
+        type: "add",
+        addedBy: req.user?.username || "Unknown",
+        createdAt: new Date(),
+      });
+
+      res.status(200).json({
+        message: "Balance added successfully",
+        newBalance: updatedBalance,
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // Update user's balance by subtract new amount
+  router.put("/subtract-balance/:id", authenticateToken, async (req, res) => {
+    const { id } = req.params;
+    const { amountToSubtract } = req.body;
+
+    // Validate ID and amount
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid user ID" });
+    }
+
+    if (typeof amountToSubtract !== "number" || amountToSubtract <= 0) {
+      return res
+        .status(400)
+        .json({ error: "Amount must be a positive number" });
+    }
+
+    try {
+      const user = await usersCollection.findOne({ _id: new ObjectId(id) });
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      if (user.balance < amountToSubtract) {
+        return res.status(400).json({ error: "Insufficient balance" });
+      }
+
+      const updatedBalance = user.balance - amountToSubtract;
+
+      const result = await usersCollection.updateOne(
+        { _id: new ObjectId(id) },
+        {
+          $set: {
+            balance: updatedBalance,
+            updatedAt: new Date(),
+          },
+        }
+      );
+
+      if (result.modifiedCount === 0) {
+        return res.status(500).json({ error: "Failed to update balance" });
+      }
+
+      await balanceHistoryCollection.insertOne({
+        userId: user._id,
+        username: user.username,
+        amount: amountToSubtract,
+        type: "subtract",
+        addedBy: req.user?.username || "Unknown",
+        createdAt: new Date(),
+      });
+
+      res.status(200).json({
+        message: "Balance subtracted successfully",
+        newBalance: updatedBalance,
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // Get balance history of all users
+  router.get("/balance-history", authenticateToken, async (req, res) => {
+    try {
+      const history = await balanceHistoryCollection
+        .find({})
+        .sort({ createdAt: -1 }) // latest first
+        .toArray();
+
+      res.status(200).json(history);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch balance history" });
     }
   });
 

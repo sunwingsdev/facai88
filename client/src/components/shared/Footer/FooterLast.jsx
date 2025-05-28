@@ -18,9 +18,8 @@ const FooterLast = () => {
     <div className=" mx-2">
       <div className=" mt-5 py-4  border-t border-white border-opacity-50">
         <div>
-          <h2 className="text-textSecondaryColor text-sm my-2"> 
-
-            {language === "en" ? "Gaming License": "গেইমিংয়ের লাইসেন্স "}
+          <h2 className="text-textSecondaryColor text-sm my-2">
+            {language === "en" ? "Gaming License" : "গেইমিংয়ের লাইসেন্স "}
           </h2>
           <div className="flex flex-row items-center  gap-3">
             {licenseData.map((image, index) => (
@@ -38,8 +37,9 @@ const FooterLast = () => {
           <div className="">
             <div>
               <h2 className="text-textSecondaryColor leading-tight text-sm my-2">
-                
-                {language === "en" ? "Official Brand Partner": "অফিসিয়াল ব্র্যান্ড পার্টনার "}
+                {language === "en"
+                  ? "Official Brand Partner"
+                  : "অফিসিয়াল ব্র্যান্ড পার্টনার "}
               </h2>
               <div className="flex items-center gap-2">
                 <div>
@@ -49,9 +49,8 @@ const FooterLast = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-textSecondaryColor text-sm my-2">  
-            {language === "en" ? "APP Download": "অ্যাপ ডাউনলোড "}
-
+            <h2 className="text-textSecondaryColor text-sm my-2">
+              {language === "en" ? "APP Download" : "অ্যাপ ডাউনলোড "}
             </h2>
             <div className="flex items-center gap-2">
               <div>
@@ -69,12 +68,10 @@ const FooterLast = () => {
           className="w-10"
         />
         <div className="text-white text-xs">
-          <h2 className="text-textSecondaryColor">
-          Best Quality Platform
-            </h2>
+          <h2 className="text-textSecondaryColor">Best Quality Platform</h2>
           <p className="opacity-50 text-[10px]">
-            © 2025 {import.meta.env.VITE_SITE_NAME} কপিরাইট। সমস্ত অধিকার
-            সংরক্ষিত
+            © {new Date().getFullYear()} {import.meta.env.VITE_SITE_NAME}{" "}
+            কপিরাইট। সমস্ত অধিকার সংরক্ষিত
           </p>
         </div>
       </div>
@@ -82,18 +79,20 @@ const FooterLast = () => {
       <div className="text-white hidden text-opacity-50 text-xs   gap-x-3 py-4 border-t border-white border-opacity-50">
         <p>
           <Link className="text-textSecondaryColor">
-            {import.meta.env.VITE_SITE_NAME}.com
+            {import.meta.env.VITE_SITE_SHORT_NAME}.com
           </Link>
-          BJ88 হোল্ডিংস লিমিটেডের মালিকানাধীন এবং এর আওতায় পরিচালিত।
-          রেজিস্ট্রেশন নম্বর: ১৫৮৩৯, নিবন্ধিত ঠিকানা: হামছাকো, মুতসামুদু,
-          আনজোয়ানের স্বায়ত্তশাসিত দ্বীপ, কমোরোস ইউনিয়ন। আমাদের সাথে যোগাযোগের
-          ঠিকানা
+          হোল্ডিংস লিমিটেডের মালিকানাধীন এবং এর আওতায় পরিচালিত। রেজিস্ট্রেশন
+          নম্বর: ১৫৮৩৯, নিবন্ধিত ঠিকানা: হামছাকো, মুতসামুদু, আনজোয়ানের
+          স্বায়ত্তশাসিত দ্বীপ, কমোরোস ইউনিয়ন। আমাদের সাথে যোগাযোগের ঠিকানা
         </p>
 
         <p>
-          <Link className="text-textSecondaryColor">bj88holdingslimited@gmail.com</Link> |{" "}
           <Link className="text-textSecondaryColor">
-            {import.meta.env.VITE_SITE_NAME}.com
+            support@{import.meta.env.VITE_SITE_SHORT_NAME}.com
+          </Link>{" "}
+          |{" "}
+          <Link className="text-textSecondaryColor">
+            {import.meta.env.VITE_SITE_SHORT_NAME}.com
           </Link>{" "}
           কমোরোস ইউনিয়নের আনজুয়ান স্বায়ত্তশাসিত দ্বীপ সরকার দ্বারা
           লাইসেন্সপ্রাপ্ত এবং নিয়ন্ত্রিত এবং লাইসেন্স নং ALSI-202410030-FI1 এর
@@ -102,7 +101,7 @@ const FooterLast = () => {
 
         <p>
           <Link className="text-textSecondaryColor">
-            {import.meta.env.VITE_SITE_NAME}.com
+            {import.meta.env.VITE_SITE_SHORT_NAME}.com
           </Link>{" "}
           সমস্ত আইনগত অনুমোদন ও শর্ত পূর্ণ করেছে এবং যেকোনো ধরণের গেম অফ চান্স
           এবং বেট পরিচালনার জন্য বৈধভাবে অনুমোদিত।

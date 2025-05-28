@@ -30,7 +30,7 @@ const FooterFaq = () => {
         {menuItems.map((item, index) => (
           <Link
             key={index}
-            href={item.to}
+            to={item.to}
             className="text-textSecondaryColor border-l-2 border-textSecondaryColor text-xs px-2 hover:underline"
           >
             {item.label[language] || item.label.en}

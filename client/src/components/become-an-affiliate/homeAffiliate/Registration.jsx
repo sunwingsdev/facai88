@@ -4,19 +4,19 @@ const Registration = () => {
     {
       title: "Registration Form",
       description: `To become a ${
-        import.meta.env.VITE_SITE_NAME
+        import.meta.env.VITE_SITE_SHORT_NAME
       } partner, applicants must complete the registration form. Click Register and fill it out accurately.`,
     },
     {
       title: "Verification",
       description: `After submitting the ${
-        import.meta.env.VITE_SITE_NAME
+        import.meta.env.VITE_SITE_SHORT_NAME
       } partner form, expect review and email confirmation within 24 hours.`,
     },
     {
       title: "Payment",
       description: `Earnings are transferred weekly to the partner's ${
-        import.meta.env.VITE_SITE_NAME
+        import.meta.env.VITE_SITE_SHORT_NAME
       } account provided during registration.`,
     },
   ];

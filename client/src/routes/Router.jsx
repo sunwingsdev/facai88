@@ -92,6 +92,7 @@ import PrivacyPolicyInfo from "@/pages/extra/PrivacyPolicyInfo";
 import FaqInfo from "@/pages/extra/FaqInfo";
 import DepositPhone from "@/pages/DepositPhone";
 import AffiliateFacaiLayout from "@/layouts/AffiliateFacaiLayout";
+import BalanceHistories from "@/pages/dashboard/users/BlanceHistories";
 import AffiliateForgetPass from "@/pages/AffiliateForgetPass/AffiliateForgetPass";
 import AffHome from "@/pages/AffiliateFacai/AffHome";
 import AffCondition from "@/pages/AffiliateFacai/AffCondition";
@@ -162,7 +163,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/deposit-now",
+    path: "/register-success-page",
     element: <DepositPhone />,
   },
   {
@@ -180,6 +181,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <AllUsers />,
+      },
+      {
+        path: "balance-histories",
+        element: <BalanceHistories />,
       },
       { path: "profile/:id", element: <AdminProfile /> },
       { path: "cashagent", element: <CashAgent /> },
@@ -352,8 +357,6 @@ const router = createBrowserRouter([
         path: "conditions",
         element: <AffCondition />,
       },
-      
-      
     ],
   },
 

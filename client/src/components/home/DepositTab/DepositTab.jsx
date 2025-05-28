@@ -16,7 +16,7 @@ const DepositTab = () => {
   const [addDeposit] = useAddDepositMutation();
   const { data: allPaymentNumbers } = useGetAllPaymentNumbersQuery();
   const { data: promotions } = useGetPromotionsQuery();
-  console.log(promotions);
+  // console.log(promotions);
   // console.log(allPaymentNumbers);
   const [selectedPromotion, setSelectedPromotion] = useState(null);
   const [formData, setFormData] = useState({
@@ -36,7 +36,6 @@ const DepositTab = () => {
   const { addToast } = useToasts();
 
   const { data: gateways } = useGetPaymentMethodsQuery();
-  // console.log(gateways);
 
   useEffect(() => {
     if (gateways && gateways?.length > 0) {
