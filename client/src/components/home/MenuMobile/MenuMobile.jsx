@@ -57,11 +57,16 @@ const MenuMobile = ({ toggleOpenLanguage,setIsModalOpen,setIsModalLoginOpen }) =
           <span className="font-semibold bg-gray-200 flex items-center justify-center w-1/3 py-2 gap-1 cursor-pointer">
             <img src={Bdlogo} alt="" className="h-6" />
             <span
-              className="text-black text-center text-sm
+              className="text-black text-left text-sm
             "
               onClick={toggleOpenLanguage}
             >
-              English <br /> Bengali
+              
+              {language === "en" ? "English":"ইংরেজি"}
+              <br />
+              {language === "en" ? "Bengali":"বাংলা"}
+              
+              
             </span>
           </span>
 
