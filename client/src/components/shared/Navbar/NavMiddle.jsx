@@ -229,30 +229,29 @@ const NavMiddle = ({ navItems }) => {
           ) : (
             <div className="md:flex items-center gap-8 text-white hidden">
               <Link to="/login">
-              {/* <p
+                {/* <p
                 className="px-7 py-1  hover:border-[#ffb405] hover:border border border-transparent rounded cursor-pointer"
                 // onClick={handleModalOpen}
               >
                 লগ ইন
               </p> */}
-              <p
-                className="px-7 py-1 bg-white-to-darkblue   hover:border border border-transparent rounded cursor-pointer"
-                // onClick={handleModalOpen}
-              >
-                লগ ইন
-              </p>
+                <p
+                  className="px-7 py-1 bg-white-to-darkblue   hover:border border border-transparent rounded cursor-pointer"
+                  // onClick={handleModalOpen}
+                >
+                  লগ ইন
+                </p>
               </Link>
               {/* <Link to="/register">
                 <PrimaryButton>সাইন আপ</PrimaryButton>
               </Link> */}
               <Link to="/register">
-                
                 <p
-                className="px-7 py-1 bg-gold-gradient   hover:border border border-transparent rounded cursor-pointer"
-                // onClick={handleModalOpen}
-              >
-               সাইন আপ
-              </p>
+                  className="px-7 py-1 bg-gold-gradient   hover:border border border-transparent rounded cursor-pointer"
+                  // onClick={handleModalOpen}
+                >
+                  সাইন আপ
+                </p>
               </Link>
             </div>
           )}
@@ -274,7 +273,7 @@ const NavMiddle = ({ navItems }) => {
       <Modal
         isOpen={isModalOpen}
         onOpenChange={handleModalClose}
-        title={`${import.meta.env.VITE_SITE_NAME} এ আপনাকে স্বাগতম`}
+        title={`${import.meta.env.VITE_SITE_SHORT_NAME} এ আপনাকে স্বাগতম`}
         onSave={handleSaveChanges}
       >
         <LoginForm closeModal={handleModalClose} />

@@ -25,17 +25,17 @@ const Marquee = () => {
             {/* Actual Content */}
             <div className="flex">
               <span className="mx-6 inline-block text-xs">
-                <span className="text-xs">
+                <span className="text-xs lowercase">
                   {" "}
                   প্রিয় বাংলালিংক গ্রাহকবৃন্দ, অনুগ্রহ করে প্রদত্ত লিংকটি
                   ব্যবহার করে আমাদের ওয়েবসাইটে প্রবেশ করুন{" "}
-                  {import.meta.env.VITE_SITE_NAME}.com{" "}
+                  {import.meta.env.VITE_SITE_SHORT_NAME}.com{" "}
                 </span>
               </span>
-              <span className="mx-6 inline-block text-xs">
+              <span className="mx-6 inline-block text-xs lowercase">
                 প্রিয় বাংলালিংক গ্রাহকবৃন্দ, অনুগ্রহ করে প্রদত্ত লিংকটি ব্যবহার
                 করে আমাদের ওয়েবসাইটে প্রবেশ করুন{" "}
-                {import.meta.env.VITE_SITE_NAME}.com
+                {import.meta.env.VITE_SITE_SHORT_NAME}.com
               </span>
             </div>
           </div>

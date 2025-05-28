@@ -8,8 +8,8 @@ const PrivacyPolicy = () => {
             This Privacy Policy governs the {import.meta.env.VITE_SITE_NAME}
             website, including any other websites, pages, subpages, subdomains,
             or sections accessible via <br />
-            <span className="text-customYellow">
-              www.{import.meta.env.VITE_SITE_NAME}.com.
+            <span className="text-customYellow lowercase">
+              www.{import.meta.env.VITE_SITE_SHORT_NAME}.com.
             </span>
             This document outlines how we process the personal information we
             collect from you or that you provide to us. By using or registering
@@ -144,8 +144,8 @@ const PrivacyPolicy = () => {
           <p className="">
             For any requests regarding your personal information or rights
             mentioned above, please contact us at <br />
-            <span className="text-customYellow">
-              support@{import.meta.env.VITE_SITE_NAME}.com.
+            <span className="text-customYellow lowercase">
+              support@{import.meta.env.VITE_SITE_SHORT_NAME}.com.
             </span>{" "}
           </p>
         </div>

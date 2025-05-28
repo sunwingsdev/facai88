@@ -27,7 +27,8 @@ const AllUsers = () => {
           user.phone.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (user.email &&
           user.email.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
+    )
+    ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const paginatedUsers = filteredUsers?.slice(
     (currentPage - 1) * rowsPerPage,

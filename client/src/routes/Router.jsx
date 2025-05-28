@@ -92,6 +92,16 @@ import PrivacyPolicyInfo from "@/pages/extra/PrivacyPolicyInfo";
 import FaqInfo from "@/pages/extra/FaqInfo";
 import DepositPhone from "@/pages/DepositPhone";
 import AffiliateFacaiLayout from "@/layouts/AffiliateFacaiLayout";
+import BalanceHistories from "@/pages/dashboard/users/BlanceHistories";
+import AffiliateForgetPass from "@/pages/AffiliateForgetPass/AffiliateForgetPass";
+import AffHome from "@/pages/AffiliateFacai/AffHome";
+import AffCondition from "@/pages/AffiliateFacai/AffCondition";
+import AffCommission from "@/pages/AffiliateFacai/AffCommission";
+import AffPromotions from "@/pages/AffiliateFacai/AffPromotions";
+import AffProduct from "@/pages/AffiliateFacai/AffProduct";
+import AffGuide from "@/pages/AffiliateFacai/AffGuide";
+import AffContact from "@/pages/AffiliateFacai/AffContact";
+import AffDiamondVolt from "@/pages/AffiliateFacai/AffDiamondVolt";
 
 const router = createBrowserRouter([
   {
@@ -153,7 +163,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/deposit-now",
+    path: "/register-success-page",
     element: <DepositPhone />,
   },
   {
@@ -171,6 +181,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <AllUsers />,
+      },
+      {
+        path: "balance-histories",
+        element: <BalanceHistories />,
       },
       { path: "profile/:id", element: <AdminProfile /> },
       { path: "cashagent", element: <CashAgent /> },
@@ -311,12 +325,38 @@ const router = createBrowserRouter([
     path: "/affiliate",
     element: <AffiliateFacaiLayout />,
     children: [
-      // {
-      //   path: "",
-      //   element: <HomeAffiliate />,
-      // },
-      
-      
+      {
+        path: "",
+        element: <AffHome />,
+      },
+      {
+        path: "commission",
+        element: <AffCommission />,
+      },
+      {
+        path: "promotions",
+        element: <AffPromotions />,
+      },
+      {
+        path: "diamond-volt",
+        element: <AffDiamondVolt />,
+      },
+      {
+        path: "product",
+        element: <AffProduct />,
+      },
+      {
+        path: "guide",
+        element: <AffGuide />,
+      },
+      {
+        path: "contact",
+        element: <AffContact />,
+      },
+      {
+        path: "conditions",
+        element: <AffCondition />,
+      },
     ],
   },
 
@@ -328,6 +368,10 @@ const router = createBrowserRouter([
   {
     path: "/affiliate/signup",
     element: <AffiliateSignUp />,
+  },
+  {
+    path: "/affiliate/forgetpass",
+    element: <AffiliateForgetPass />,
   },
 
   {

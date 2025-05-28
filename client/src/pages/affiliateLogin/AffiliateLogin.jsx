@@ -151,9 +151,9 @@ const AffiliateLogin = () => {
               </button>
             </Link>
             <p>|</p>
-            <a href="#" className="text-gray-600 hover:underline">
+            <Link to="/affiliate/forgetpass" className="text-gray-600 hover:underline">
               Forgot password?
-            </a>
+            </Link>
           </div>
         </form>
       </div>

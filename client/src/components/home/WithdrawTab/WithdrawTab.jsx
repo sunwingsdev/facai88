@@ -110,9 +110,9 @@ const WithdrawTab = () => {
       <div className="space-y-2">
         <p className="text-sm">পেমেন্ট পদ্ধতি</p>
         <div className="flex flex-wrap gap-3">
-          {withdrawMethods?.map((method) => (
+          {withdrawMethods?.map((method, i) => (
             <div
-              key={method.mothod}
+              key={i}
               className={`relative group flex flex-col items-center justify-center gap-2 border px-10 py-2 ${
                 formData.paymentMethod === method.paymentMethod
                   ? "border-[#ffe43c] text-[#ffe43c]"
@@ -159,7 +159,6 @@ const WithdrawTab = () => {
                     [e.target.name]: e.target.value,
                   }))
                 }
-                value={formData[inputField.name] || ""}
               />
               {inputField.fieldInstruction && (
                 <p className="text-xs text-gray-400">
@@ -207,8 +206,8 @@ const WithdrawTab = () => {
           </p>
           <p>
             3.উইথড্র রিজেকশন প্রতিরোধ করতে আপনার ব্যাংক অ্যাকাউন্ট হোল্ডার নেম
-            এবং {import.meta.env.VITE_SITE_NAME} রেজিস্টার্ড নেমের সাথে মিল আছে
-            তা নিশ্চিত করুন।
+            এবং {import.meta.env.VITE_SITE_SHORT_NAME} রেজিস্টার্ড নেমের সাথে
+            মিল আছে তা নিশ্চিত করুন।
           </p>
         </div>
 

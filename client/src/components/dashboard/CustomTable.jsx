@@ -57,7 +57,7 @@ const CustomTable = ({ title, headers, data, borderColor }) => {
 
   return (
     <>
-      <div className="bg-backgroundSecondaryColor p-2 mb-4 mt-16 rounded-sm shadow-md">
+      <div className="bg-primary-primaryColorTwo p-2 mb-4 mt-16 rounded-sm shadow-md">
         <h1 className="text-2xl text-white font-semibold text-center">
           {title}
         </h1>

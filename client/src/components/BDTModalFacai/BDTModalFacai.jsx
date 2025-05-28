@@ -1,6 +1,6 @@
 import Bdlogo from "../../assets/mobile-colar/BDTHeader (1).svg"; // Ensure the correct path
 
-const BDTModal = ({ isOpenLanguage, toggleCloseLanguage, toggleLanguage, currentLang = "bn" }) => {
+const BDTModalFacai = ({ isOpenLanguage, toggleCloseLanguage, toggleLanguage, currentLang = "bn" }) => {
   if (!isOpenLanguage) return null;
 
   const handleLanguageChange = (lang) => {
@@ -25,7 +25,7 @@ const BDTModal = ({ isOpenLanguage, toggleCloseLanguage, toggleLanguage, current
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
       onClick={toggleCloseLanguage}
     >
       <div
@@ -81,4 +81,4 @@ const BDTModal = ({ isOpenLanguage, toggleCloseLanguage, toggleLanguage, current
   );
 };
 
-export default BDTModal;
+export default BDTModalFacai;
