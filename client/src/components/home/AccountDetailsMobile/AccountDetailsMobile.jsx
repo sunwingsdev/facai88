@@ -1,11 +1,13 @@
+import SpinLoader from "@/components/shared/loaders/Spinloader";
 import Modal from "@/components/shared/Modal";
-import { logout } from "@/redux/slices/authSlice";
-import { useState } from "react";
+import { useLazyGetUserByIdQuery } from "@/redux/features/allApis/usersApi/usersApi";
+import { logout, setSingleUser } from "@/redux/slices/authSlice";
+import { useEffect, useState } from "react";
 import { BsClipboardHeart } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
 import { FaEye, FaEyeSlash, FaUsers, FaWhatsapp } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
-import { IoMailOpenOutline } from "react-icons/io5";
+import { IoMailOpenOutline, IoReload } from "react-icons/io5";
 import { MdDoubleArrow, MdLockOpen, MdOutlineEmail } from "react-icons/md";
 import { PiHandWithdraw, PiWallet } from "react-icons/pi";
 import { RiBitCoinLine, RiMessengerLine } from "react-icons/ri";
@@ -72,11 +74,34 @@ const Card = ({ contents, heading, handleModalOpen, closeModal }) => {
 
 const AccountDetailsMobile = ({ setDrawerOpen }) => {
   const { user } = useSelector((state) => state.auth);
+  const [getSingleUser] = useLazyGetUserByIdQuery();
   const [isWalletOpen, setIsWalletOpen] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { addToast } = useToasts();
+
+  useEffect(() => {
+    if (!user) return;
+    getSingleUser(user?._id).then(({ data }) => {
+      dispatch(setSingleUser(data)); // Save singleUser to Redux
+    });
+  }, [user]);
+
+  const reloadBalance = () => {
+    if (!user) return;
+
+    setLoading(true); // Set loading state to true
+
+    getSingleUser(user?._id)
+      .then(({ data }) => {
+        dispatch(setSingleUser(data)); // Update Redux store with the latest balance
+      })
+      .finally(() => {
+        setLoading(false); // Set loading state to false after data is fetched
+      });
+  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -183,8 +208,22 @@ const AccountDetailsMobile = ({ setDrawerOpen }) => {
                     />
                   )}
                 </p>
-                <p className="text-xl text-yellow-300">
-                  ৳ <span className="ms-2">{isWalletOpen ? 0 : "***"}</span>
+                <p
+                  className="text-xl text-yellow-300 cursor-pointer"
+                  onClick={reloadBalance}
+                >
+                  {loading ? (
+                    <span className="flex items-center gap-2 animate-pulse text-white">
+                      <SpinLoader className="animate-spin" />
+                    </span>
+                  ) : (
+                    <>
+                      <IoReload className="inline-block text-white me-2" />৳{" "}
+                      <span className="ms-2">
+                        {isWalletOpen ? user?.balance?.toFixed(2) ?? 0 : "***"}
+                      </span>
+                    </>
+                  )}
                 </p>
               </div>
 

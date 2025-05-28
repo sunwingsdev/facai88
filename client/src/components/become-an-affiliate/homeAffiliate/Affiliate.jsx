@@ -69,7 +69,7 @@ const Affiliate = () => {
       <div className="text-center">
         <div className="max-w-full">
           <h2 className="text-4xl text-yellow-400 mb-10 uppercase">
-            WHY {import.meta.env.VITE_SITE_NAME} AFFILIATE
+            WHY {import.meta.env.VITE_SITE_SHORT_NAME} AFFILIATE
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:mr-10 gap-8 md:gap-12 lg:gap-10 justify-items-center">
             {featuresData.map((feature, index) => (
@@ -96,7 +96,7 @@ const Affiliate = () => {
                 <div className="text-center mt-4 px-2 text-[14px] font-medium leading-relaxed">
                   {feature.description.replace(
                     "{SITE_NAME}",
-                    import.meta.env.VITE_SITE_NAME
+                    import.meta.env.VITE_SITE_SHORT_NAME
                   )}
                 </div>
               </div>

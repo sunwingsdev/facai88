@@ -210,9 +210,14 @@ const RegisterFacai = ({ handleLoginOpen, setIsModalOpen }) => {
           appearance: "success",
           autoDismiss: true,
         });
-        setIsModalOpen(false);
+        // setIsModalOpen(false);
         setLoading(false);
-        navigate("/");
+        const deviceWidth = window.innerWidth;
+        if (deviceWidth <= 768) {
+          navigate("/register-success-page"); // Mobile
+        } else {
+          navigate("/"); // Desktop
+        }
       }
     } catch (error) {
       console.error(error.message);

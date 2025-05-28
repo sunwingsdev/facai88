@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const InfoLayout = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   // Menu items with dynamic submenu
   const menuItems = [
     { label: "আমাদের সম্পর্কে", to: "/info/about-us" },

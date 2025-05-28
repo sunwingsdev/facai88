@@ -15,12 +15,12 @@ const FooterBottom = () => {
     {
       id: 2,
       title: "দায়িত্বশীল গেমিং",
-      route: "/info",
+      route: "/info/responsible-gaming",
     },
     {
       id: 3,
       title: "আমাদের সম্পর্কে",
-      route: "/info",
+      route: "/info/about-us",
     },
   ];
   return (
@@ -47,8 +47,8 @@ const FooterBottom = () => {
             ))}
           </div>
           <p className="text-xs text-[#999]">
-            © 2024 {import.meta.env.VITE_SITE_NAME} কপিরাইট। সমস্ত অধিকার
-            সংরক্ষিত
+            © {new Date().getFullYear()} {import.meta.env.VITE_SITE_NAME}{" "}
+            কপিরাইট। সমস্ত অধিকার সংরক্ষিত
           </p>
         </div>
       </div>

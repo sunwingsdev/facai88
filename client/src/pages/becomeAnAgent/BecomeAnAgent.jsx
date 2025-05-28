@@ -325,7 +325,7 @@ const BecomeAnAgent = () => {
                   <div className="flex gap-2 items-center text-base lg:text-xl font-bold uppercase italic underline text-white mt-4 lg:mt-8">
                     <FaEarthAmericas className="text-red-700" size={28} />
                     <p className="lowercase">
-                      {import.meta.env.VITE_SITE_NAME}.com
+                      {import.meta.env.VITE_SITE_SHORT_NAME}.com
                     </p>
                   </div>
                 </Link>
@@ -333,7 +333,7 @@ const BecomeAnAgent = () => {
                   <div className="flex gap-2 items-center text-base lg:text-xl font-bold uppercase italic underline text-white mt-3">
                     <MdEmail className="text-red-700" size={28} />
                     <p className="lowercase">
-                      support@{import.meta.env.VITE_SITE_NAME}agents.com
+                      support@{import.meta.env.VITE_SITE_SHORT_NAME}agents.com
                     </p>
                   </div>
                 </Link>

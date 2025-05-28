@@ -88,6 +88,43 @@ const usersApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
+
+    addUserBalance: builder.mutation({
+      query: ({ id, amountToAdd, token }) => ({
+        url: `/users/add-balance/${id}`,
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: { amountToAdd },
+      }),
+      invalidatesTags: ["users"],
+    }),
+
+    subtractUserBalance: builder.mutation({
+      query: ({ id, amountToSubtract, token }) => ({
+        url: `/users/subtract-balance/${id}`,
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: { amountToSubtract },
+      }),
+      invalidatesTags: ["users"],
+    }),
+
+    getAllUsersBalanceHistory: builder.query({
+      query: (token) => ({
+        url: "/users/balance-history",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+      providesTags: ["users"],
+    }),
   }),
 });
 
@@ -100,4 +137,7 @@ export const {
   useUpdateUserStatusMutation,
   useUpdateUserMutation,
   useUpdateUserProfileImageMutation,
+  useAddUserBalanceMutation,
+  useSubtractUserBalanceMutation,
+  useGetAllUsersBalanceHistoryQuery,
 } = usersApi;

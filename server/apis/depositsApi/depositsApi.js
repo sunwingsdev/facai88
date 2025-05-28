@@ -100,7 +100,7 @@ const depositsApi = (depositsCollection, usersCollection) => {
       if (status === "completed") {
         await usersCollection.updateOne(
           { _id: new ObjectId(deposit.userId) },
-          { $inc: { balance: deposit.amount } }
+          { $inc: { balance: deposit.amount, depositBalance: deposit.amount } }
         );
       }
 

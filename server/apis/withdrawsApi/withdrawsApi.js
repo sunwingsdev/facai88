@@ -104,10 +104,20 @@ const withdrawsApi = (withdrawsCollection, usersCollection) => {
 
       // Only increase balance if rejected
       if (status === "rejected") {
+        // Refund balance if rejected
         await usersCollection.updateOne(
           { _id: new ObjectId(withdraw.userId) },
           { $inc: { balance: withdraw.amount } }
-          // { $inc: { balance: -withdraw.amount } }
+        );
+      } else if (status === "completed") {
+        // Track successful withdraws in withdrawBalance
+        await usersCollection.updateOne(
+          { _id: new ObjectId(withdraw.userId) },
+          {
+            $inc: {
+              withdrawBalance: withdraw.amount, // creates field if not present
+            },
+          }
         );
       }
 

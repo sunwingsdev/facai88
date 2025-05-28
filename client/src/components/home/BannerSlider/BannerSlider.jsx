@@ -86,10 +86,10 @@ export function BannerSlider() {
         <Container>
           <div className="flex items-center gap-4">
             <HiMiniSpeakerWave className="text-xl md:text-3xl" />
-            <Marquee className="text-xs md:text-sm">
-              প্রিয় গ্রাহক, আপনার {import.meta.env.VITE_SITE_NAME}.live এ ভিসিট
-              করতে সমস্যা হলে, অনুগ্রহ করে ---- ব্যবহার করুন, এটি আমাদের ব্যাকআপ
-              ওয়েবসাইট লিংক।
+            <Marquee className="text-xs md:text-sm lowercase">
+              {`প্রিয় গ্রাহক, আপনার ${
+                import.meta.env.VITE_SITE_SHORT_NAME
+              }.live এ ভিসিট করতে সমস্যা হলে, অনুগ্রহ করে ---- ব্যবহার করুন, এটি আমাদের ব্যাকআপ ওয়েবসাইট লিংক।`}
             </Marquee>
           </div>
         </Container>
